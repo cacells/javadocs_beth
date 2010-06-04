@@ -1,0 +1,18 @@
+%class 
+ParamVals//holds experiment parameters
+%fields
+double/ pr,pl,ps /probabilities of moving
+ DecimalFormat/ twoPlaces/ static. for pretty printing of floats with 2 d.p.
+DecimalFormat/ asPercent/ static. for pretty printing of percentages
+boolean/ nowrap/ static concerned with the toroidal wrapping
+%constructor
+ParamVals()//sets default probabilities
+ParamVals(BufferedReader input)//set parameter values using a buffered input from the console. Used before the program had buttons.
+%methods
+void/ SetParamVals()/set parameter values using popup dialog boxes. The currently used method for setting and resetting parameters.
+void/ SetParamVals(double dpr,double dpl)/manually set parameter values. note: these are not checked for validity
+int/ changeProbabilities()/change probabilities using dialog to console and reading from console but not buffered. Used before the program had buttons.
+String/ toString()/for printing the parameters
+String/ filename()/make the parameters into a string that can be part of a filename
+double/ readdouble(BufferedReader input,String question)/ask a question to console and read input from there using buffered reader
+

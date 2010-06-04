@@ -1,0 +1,21 @@
+%class 
+CACell//this class describes the cell and its state, and has methods to update the cell's state
+%field
+int/maxCycle/ this sets the CAmax to 4 (see type)
+Random/ rand/random variable
+boolean/ canMoveLeft/keep track of the state of the cell
+boolean/ canMoveRight/ditto
+boolean/canStay/ditto
+boolean/Available/keep track of the state of the cell
+int/ type/type of cell: 0 = space, 1 = SC, 2=CA_1....5=CA_4
+CABoxStatic/ home/ The box the cell sits in
+double/ stain/could be used to indicate age 
+double/ scRate/ Relative SC proliferaion rate if scRate = 0.5 SC proliferaion rate would be half CA rate
+int/ lineage/unique number for each cell in the initial set
+%constructors
+CACell(CABoxStatic home,int lin)//gives the cell a home, a lineage, a stain of zero, and makes the home unavailable
+%methods
+ void/ maintain(ParamVals params)/ Determines if a Cell can detach or grow and sets counters
+void/ growth(CACell cHold)/ Growth occurs into cell
+boolean/ grow()/ given movement left or right checks for space and moves
+

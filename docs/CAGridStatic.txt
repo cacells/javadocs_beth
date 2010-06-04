@@ -1,0 +1,13 @@
+%class 
+CAGridStatic//This is the main part of the simulation of the CA version of the model
+%fields
+ArrayList <CACell> /tissue/ List of cells that make up the tissue
+ParamVals/params/parameters of the experiment 
+Random/rand/random class
+%constructors	
+CAGridStatic(int size)// Create new instance of simulation with size of grid maximum CA cycle and fraction of stem cells 
+%methods
+int/bounds(int a,int size)/ Creates the toroidal links between top and bottom and left and right	
+void/ stain()/ Stains all cells in the tissue list
+void/ setNewGridParams/ set grid params such as probability of moving right
+void/ iterate/ The main iterative loop of the simulation. Update tissue status then move randomly through.

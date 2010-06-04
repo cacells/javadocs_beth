@@ -1,0 +1,15 @@
+%class 
+CAImagePanel//extends JPanel. Taken from some of Ric's code. Required to properly display and update the image amidst the buttons.
+%fields
+Image/backImg/ a Java image class
+Graphics/backGr/ The abstract Java class that allows us, for instance, to draw images onto panels 
+int/colums, rows/size of the output to be displayed
+int/xScale, yScale/scale factors for displaying the output
+%constructors
+%methods
+void /setScale(int noColums,int noRows, int scale)/set image size. can't be done in a constructor for some reason.		
+void /clearCAPanel/clear the image 
+void /drawCircleAt(int x, int y, Color colour)/draw a circle on the image to represent a cell
+void /updateGraphic()/set the current image as the one that gets displayed
+void /paintComponent(Graphics g)/from Ric just calls updateGraphics. overrides something.
+void /paint(Graphics g)/from Ric just calls uodateGraphics. overrides something.

@@ -1,0 +1,75 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{longtable}
+\newcommand \bt{\begin{longtable}{p{0.25\textwidth}p{0.74\textwidth}}}
+\newcommand \et{\end{longtable}}
+ 
+\usepackage[pdftex,usenames,dvipsnames]{color}
+
+\definecolor{classbg}{rgb}{0.707,0.648,0.586}
+\definecolor{fieldbg}{rgb}{0.363,0.641,0.746}
+\definecolor{conbg}{rgb}{0.711,0.793,0.836}
+\definecolor{descriptbg}{rgb}{0.848,0.918,0.953}
+
+\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault}
+
+\newcommand{\hs}{\hspace{0.5cm}}
+
+%environment for indented description
+\newenvironment{di}
+{\begin{flushright}
+\begin{minipage}{0.95\textwidth}
+\begin{description}
+}
+{\end{description}
+\end{minipage}
+\end{flushright}
+}
+
+\usepackage[hmargin=2.5cm,vmargin=2.5cm]{geometry}
+\setlength{\parindent}{0.05\textwidth}
+
+\begin{document}
+
+\noindent
+\colorbox{classbg}{\parbox{1.0\textwidth}{\Large{Class}}}
+\begin{di}
+\item[\large{ParamVals}]\qquad\\
+holds experiment parameters
+\end{di}
+\colorbox{fieldbg}{\parbox{1.0\textwidth}{\Large{Fields}}}\vspace{0.5cm}
+\bt
+\hs \textbf{pr,pl,ps} & \emph{type: double}\\
+& \hs probabilities of moving\\
+\hs \textbf{twoPlaces} & \emph{type: DecimalFormat}\\
+& \hs static. for pretty printing of floats with 2 d.p.\\
+\hs \textbf{asPercent} & \emph{type: DecimalFormat}\\
+& \hs static. for pretty printing of percentages\\
+\hs \textbf{nowrap} & \emph{type: boolean}\\
+& \hs static concerned with the toroidal wrapping\\
+\et
+\noindent\colorbox{conbg}{\parbox{1.0\textwidth}{\Large{Constructors}}}
+\begin{di}
+\item[{ParamVals()}]\qquad\\
+sets default probabilities
+\item[{ParamVals(BufferedReader input)}]\qquad\\
+set parameter values using a buffered input from the console. Used before the program had buttons.
+\end{di}
+\colorbox{descriptbg}{\parbox{1.0\textwidth}{\Large{Methods}}}
+\begin{di}
+\item[{SetParamVals()}]\emph{Returns void}\\
+set parameter values using popup dialog boxes. The currently used method for setting and resetting parameters.\\
+\item[{SetParamVals(double dpr,double dpl)}]\emph{Returns void}\\
+manually set parameter values. note: these are not checked for validity\\
+\item[{changeProbabilities()}]\emph{Returns int}\\
+change probabilities using dialog to console and reading from console but not buffered. Used before the program had buttons.\\
+\item[{toString()}]\emph{Returns String}\\
+for printing the parameters\\
+\item[{filename()}]\emph{Returns String}\\
+make the parameters into a string that can be part of a filename\\
+\item[{readdouble(BufferedReader input,String question)}]\emph{Returns double}\\
+ask a question to console and read input from there using buffered reader\\
+\end{di}
+
+\end{document}

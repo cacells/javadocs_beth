@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Class CABoxStatic</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="class.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<table width="100%"  border="0" cellspacing="1" class="tabletype1" valign="top" >
+  <tr class="CHdr">
+    <td colspan="2">Class</td>
+  </tr>
+  <tr>
+    <td class="indent hdr ftr">CABoxStatic</td>
+	<td class="hdr ftr">
+	  boxes or homes for the cells</td>
+  </tr>
+  </tr>
+  <tr class=FHdr>
+    <td colspan="2">Fields</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">rand</td>
+    <td class="hdr"> <i>Type: Random </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;random variable   </td>
+  </tr>
+  <tr>
+    <td class="indent">occupant</td>
+    <td> <i>Type: CACell </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The cell in this box </td>
+  </tr>
+  <tr>
+    <td class="indent">x,y</td>
+    <td> <i>Type: int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;grid cordinates of the box </td>
+  </tr>
+  <tr>
+    <td class="indent ftr">neighbours</td>
+    <td class="ftr"> <i>Type: ArrayList&lt;CABoxStatic&gt; </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list of neighbouring Boxes </td>
+  </tr>
+  <tr class="ConHdr">
+    <td colspan="2">Constructors</td>
+  </tr>
+  <tr>
+    <td class="indent hdr ftr">CABoxStatic(int x, int y)</td>
+    <td class="hdr"> This constructor sets the x,y, coords of this box and initialises the array of neighbours, but does NOT add any neighbours </td>
+  </tr>
+  <tr class="MHdr">
+    <td colspan="2">Methods</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">getNeighbour(int n)</td>
+    <td class="hdr"> <i>Return Type: CACell </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;returns the cell in neighbouring position n </td>
+  </tr>
+  <tr>
+    <td class="indent ftr">addNeighbour<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(CABoxStatic newNeighbour)</td>
+    <td class="ftr"> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds a neighbour to the ArrayList (used by CAGridStatic) </td>
+  </tr>
+</table>
+</body>
+</html>
+

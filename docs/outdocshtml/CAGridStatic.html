@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Class CAGridStatic</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="class.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<table width="100%"  border="0" cellspacing="1" class="tabletype1" valign="top" >
+  <tr class="CHdr">
+    <td colspan="2">Class</td>
+  </tr>
+  <tr>
+    <td class="indent hdr ftr">CAGridStatic</td>
+	<td class="hdr ftr">
+	  This is the main part of the simulation of the CA version of the model</td>
+  </tr>
+  </tr>
+  <tr class=FHdr>
+    <td colspan="2">Fields</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">tissue</td>
+    <td class="hdr"> <i>Type: ArrayList &lt;CACell&gt;  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; List of cells that make up the tissue </td>
+  </tr>
+  <tr>
+    <td class="indent">params</td>
+    <td> <i>Type: ParamVals </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parameters of the experiment  </td>
+  </tr>
+  <tr>
+    <td class="indent ftr">rand</td>
+    <td class="ftr"> <i>Type: Random </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;random class </td>
+  </tr>
+  <tr class="ConHdr">
+    <td colspan="2">Constructors</td>
+  </tr>
+  <tr>
+    <td class="indent hdr ftr">CAGridStatic(int size)</td>
+    <td class="hdr"> Create new instance of simulation with size of grid maximum CA cycle and fraction of stem cells  </td>
+  </tr>
+  <tr class="MHdr">
+    <td colspan="2">Methods</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">bounds(int a,int size)</td>
+    <td class="hdr"> <i>Return Type: int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Creates the toroidal links between top and bottom and left and right	 </td>
+  </tr>
+  <tr>
+    <td class="indent"> stain()</td>
+    <td> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stains all cells in the tissue list </td>
+  </tr>
+  <tr>
+    <td class="indent"> setNewGridParams</td>
+    <td> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; set grid params such as probability of moving right </td>
+  </tr>
+  <tr>
+    <td class="indent ftr"> iterate</td>
+    <td class="ftr"> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The main iterative loop of the simulation. Update tissue status then move randomly through. </td>
+  </tr>
+</table>
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Class CAImagePanel</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="class.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<table width="100%"  border="0" cellspacing="1" class="tabletype1" valign="top" >
+  <tr class="CHdr">
+    <td colspan="2">Class</td>
+  </tr>
+  <tr>
+    <td class="indent hdr ftr">CAImagePanel</td>
+	<td class="hdr ftr">
+	  extends JPanel. Taken from some of Ric's code. Required to properly display and update the image amidst the buttons.</td>
+  </tr>
+  </tr>
+  <tr class=FHdr>
+    <td colspan="2">Fields</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">backImg</td>
+    <td class="hdr"> <i>Type: Image </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a Java thing </td>
+  </tr>
+  <tr>
+    <td class="indent">backGr as above</td>
+    <td> <i>Type: Graphics </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+  </tr>
+  <tr>
+    <td class="indent">colums, rows</td>
+    <td> <i>Type: int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size of the output to be displayed </td>
+  </tr>
+  <tr>
+    <td class="indent ftr">xScale, yScale</td>
+    <td class="ftr"> <i>Type: int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scale factors for displaying the output </td>
+  </tr>
+  <tr class="ConHdr">
+    <td colspan="2">Constructors</td>
+  </tr>
+<tr>&nbsp;</tr>
+  <tr class="MHdr">
+    <td colspan="2">Methods</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">setScale<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(int noColums,int noRows, int scale)</td>
+    <td class="hdr"> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set image size. can't be done in a constructor for some reason.		 </td>
+  </tr>
+  <tr>
+    <td class="indent">clearCAPanel</td>
+    <td> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clear the image  </td>
+  </tr>
+  <tr>
+    <td class="indent">drawCircleAt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(int x, int y, Color colour)</td>
+    <td> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;draw a circle on the image to represent a cell </td>
+  </tr>
+  <tr>
+    <td class="indent">updateGraphic()</td>
+    <td> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;update the displayed or displayable image with the current image  </td>
+  </tr>
+  <tr>
+    <td class="indent">paintComponent<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Graphics g)</td>
+    <td> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from Ric just calls updateGraphics. overrides something. </td>
+  </tr>
+  <tr>
+    <td class="indent ftr">paint(Graphics g)</td>
+    <td class="ftr"> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from Ric just calls uodateGraphics. overrides something. </td>
+  </tr>
+</table>
+</body>
+</html>
+

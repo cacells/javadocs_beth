@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Class CACell</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="class.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<table width="100%"  border="0" cellspacing="1" class="tabletype1" valign="top" >
+  <tr class="CHdr">
+    <td colspan="2">Class</td>
+  </tr>
+  <tr>
+    <td class="indent hdr ftr">CACell</td>
+	<td class="hdr ftr">
+	  this class describes the cell and its state, and has methods to update the cell's state</td>
+  </tr>
+  </tr>
+  <tr class=FHdr>
+    <td colspan="2">Fields</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">maxCycle</td>
+    <td class="hdr"> <i>Type: int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; this sets the CAmax to 4 (see type) </td>
+  </tr>
+  <tr>
+    <td class="indent"> rand</td>
+    <td> <i>Type: Random </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;random variable </td>
+  </tr>
+  <tr>
+    <td class="indent"> canMoveLeft</td>
+    <td> <i>Type: boolean </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keep track of the state of the cell </td>
+  </tr>
+  <tr>
+    <td class="indent"> canMoveRight</td>
+    <td> <i>Type: boolean </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ditto </td>
+  </tr>
+  <tr>
+    <td class="indent">canStay</td>
+    <td> <i>Type: boolean </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ditto </td>
+  </tr>
+  <tr>
+    <td class="indent">Available</td>
+    <td> <i>Type: boolean </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;keep track of the state of the cell </td>
+  </tr>
+  <tr>
+    <td class="indent"> type</td>
+    <td> <i>Type: int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type of cell: 0 = space, 1 = SC, 2=CA_1....5=CA_4 </td>
+  </tr>
+  <tr>
+    <td class="indent"> home</td>
+    <td> <i>Type: CABoxStatic </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The box the cell sits in </td>
+  </tr>
+  <tr>
+    <td class="indent"> stain</td>
+    <td> <i>Type: double </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;could be used to indicate age  </td>
+  </tr>
+  <tr>
+    <td class="indent"> scRate</td>
+    <td> <i>Type: double </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Relative SC proliferaion rate if scRate = 0.5 SC proliferaion rate would be half CA rate </td>
+  </tr>
+  <tr>
+    <td class="indent ftr"> lineage</td>
+    <td class="ftr"> <i>Type: int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unique number for each cell in the initial set </td>
+  </tr>
+  <tr class="ConHdr">
+    <td colspan="2">Constructors</td>
+  </tr>
+  <tr>
+    <td class="indent hdr ftr">CACell(CABoxStatic home,int lin)</td>
+    <td class="hdr">gives the cell a home, a lineage, a stain of zero, and makes the home unavailable </td>
+  </tr>
+  <tr class="MHdr">
+    <td colspan="2">Methods</td>
+  </tr>
+  <tr>
+    <td class="indent hdr"> maintain<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ParamVals params)</td>
+    <td class="hdr"> <i>Return Type:  void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Determines if a Cell can detach or grow and sets counters </td>
+  </tr>
+  <tr>
+    <td class="indent"> growth(CACell cHold)</td>
+    <td> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Growth occurs into cell </td>
+  </tr>
+  <tr>
+    <td class="indent ftr"> grow()</td>
+    <td class="ftr"> <i>Return Type: boolean </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; given movement left or right checks for space and moves </td>
+  </tr>
+</table>
+</body>
+</html>
+

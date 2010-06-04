@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Class CAStatic</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="class.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<table width="100%"  border="0" cellspacing="1" class="tabletype1" valign="top" >
+  <tr class="CHdr">
+    <td colspan="2">Class</td>
+  </tr>
+  <tr>
+    <td class="indent hdr ftr">CAStatic</td>
+	<td class="hdr ftr">
+	  extends JFrame implements Runnable, ActionListener. This class contains main. It coordinates all simulation and windowing events.</td>
+  </tr>
+  </tr>
+  <tr class=FHdr>
+    <td colspan="2">Fields</td>
+  </tr>
+  <tr>
+    <td class="indent hdr"> experiment</td>
+    <td class="hdr"> <i>Type: CAGridStatic </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the current grid of cells and its activities. This is a 1D experiment </td>
+  </tr>
+  <tr>
+    <td class="indent"> savedvals</td>
+    <td> <i>Type: int[][] </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an array to save values from the time steps of the 1D experiment. </td>
+  </tr>
+  <tr>
+    <td class="indent"> runCount</td>
+    <td> <i>Type:     int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; current experiment number </td>
+  </tr>
+  <tr>
+    <td class="indent"> epsCount</td>
+    <td> <i>Type:     int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; number of eps files that have been written </td>
+  </tr>
+  <tr>
+    <td class="indent"> newframe</td>
+    <td> <i>Type:     int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; blunt instrument for slowing the display </td>
+  </tr>
+  <tr>
+    <td class="indent"> rand</td>
+    <td> <i>Type:     Random </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; random class instance     </td>
+  </tr>
+  <tr>
+    <td class="indent"> runner</td>
+    <td> <i>Type: 	volatile Thread </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the simulation thread </td>
+  </tr>
+  <tr>
+    <td class="indent"> backImg1</td>
+    <td> <i>Type: 	Image </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the visualisation of the experiment </td>
+  </tr>
+  <tr>
+    <td class="indent"> backGr1</td>
+    <td> <i>Type: 	Graphics </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;some Java thing that takes the image and makes it part of the display or something </td>
+  </tr>
+  <tr>
+    <td class="indent"> CApicture</td>
+    <td> <i>Type: 	CAImagePanel </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; class used to display the changing image amidst the buttons </td>
+  </tr>
+  <tr>
+    <td class="indent"> startBtn,writeBtn,paramsBtn,wrapBtn</td>
+    <td> <i>Type: 	JButton </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;some self explanatory buttons </td>
+  </tr>
+  <tr>
+    <td class="indent"> msgBtn</td>
+    <td> <i>Type: 	JTextArea </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; an area to hold text. Used to display the current parameters. </td>
+  </tr>
+  <tr>
+    <td class="indent"> buttonHolder</td>
+    <td> <i>Type: 	JPanel </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a panel or window that holds the four buttons in a grid </td>
+  </tr>
+  <tr>
+    <td class="indent"> scale</td>
+    <td> <i>Type: 	int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scale factor both x and y for displaying results </td>
+  </tr>
+  <tr>
+    <td class="indent"> iterations</td>
+    <td> <i>Type: 	int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;holds the current time step </td>
+  </tr>
+  <tr>
+    <td class="indent"> gSize</td>
+    <td> <i>Type: 	int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;physical grid size both x and y </td>
+  </tr>
+  <tr>
+    <td class="indent"> maxCellType</td>
+    <td> <i>Type: 	int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number of different cell types. 0 is a non-cell, i.e. a space </td>
+  </tr>
+  <tr>
+    <td class="indent"> maxit</td>
+    <td> <i>Type: 	int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; max number of iterations for a run </td>
+  </tr>
+  <tr>
+    <td class="indent"> started</td>
+    <td> <i>Type: 	boolean </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; has a run started? </td>
+  </tr>
+  <tr>
+    <td class="indent"> palette</td>
+    <td> <i>Type:     Colour </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; palette of colours so that eps and display colours match </td>
+  </tr>
+  <tr>
+    <td class="indent"> colorindices</td>
+    <td> <i>Type: 	int[] </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;indices of the chosen colours </td>
+  </tr>
+  <tr>
+    <td class="indent">nnw</td>
+    <td> <i>Type: 	int  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;used for colour repitition </td>
+  </tr>
+  <tr>
+    <td class="indent">javaColours</td>
+    <td> <i>Type:     Color[] </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the colours in Java format </td>
+  </tr>
+  <tr>
+    <td class="indent ftr"> epsColours</td>
+    <td class="ftr"> <i>Type:     double[][] </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the colours in eps rgb format </td>
+  </tr>
+  <tr class="ConHdr">
+    <td colspan="2">Constructors</td>
+  </tr>
+  <tr>
+    <td class="indent hdr ftr">CAStatic(int size)</td>
+    <td class="hdr">sets up grid size and window size. initialises windows, buttons, and other variables. </td>
+  </tr>
+  <tr class="MHdr">
+    <td colspan="2">Methods</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">setpalette()</td>
+    <td class="hdr"> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sets up the Java and eps colours using the colour indices </td>
+  </tr>
+  <tr>
+    <td class="indent">saveCA()</td>
+    <td> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save values from the current time step </td>
+  </tr>
+  <tr>
+    <td class="indent">outputEPS()</td>
+    <td> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make a unique eps filename and call the eps printer </td>
+  </tr>
+  <tr>
+    <td class="indent">changeParameters()</td>
+    <td> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;changes experiment parameters </td>
+  </tr>
+  <tr>
+    <td class="indent">changeWrap()</td>
+    <td> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;toggle the toroidal wrapping </td>
+  </tr>
+  <tr>
+    <td class="indent">drawCA()</td>
+    <td> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;update the graphics image and flag a redraw </td>
+  </tr>
+  <tr>
+    <td class="indent">start()</td>
+    <td> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;start the thread and update the button status </td>
+  </tr>
+  <tr>
+    <td class="indent">stop()</td>
+    <td> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stop the thread and update the button status </td>
+  </tr>
+  <tr>
+    <td class="indent">actionPerformed<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ActionEvent e)</td>
+    <td> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;listens for button or other window activity and processes the requests </td>
+  </tr>
+  <tr>
+    <td class="indent">run()</td>
+    <td> <i>Return Type: void  </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;run the experiment </td>
+  </tr>
+  <tr>
+    <td class="indent"> postscriptPrint<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(String fileName)</td>
+    <td> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pretty print the results as an eps file </td>
+  </tr>
+  <tr>
+    <td class="indent"> initilise()</td>
+    <td> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set up a fresh experiment </td>
+  </tr>
+  <tr>
+    <td class="indent ftr"> main(String args[])</td>
+    <td class="ftr"> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; just kicks things off. can be given a fraction as an argument which will not be used in this program </td>
+  </tr>
+</table>
+</body>
+</html>
+

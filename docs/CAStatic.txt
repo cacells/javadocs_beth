@@ -1,0 +1,46 @@
+%class 
+CAStatic//extends JFrame implements Runnable, ActionListener. This class contains main. It coordinates all simulation and windowing events.
+%fields
+CAGridStatic/ experiment/the current grid of cells and its activities. This is a 1D experiment
+int[][]/ savedvals/an array to save values from the time steps of the 1D experiment.
+    int/ runCount/ current experiment number
+    int/ epsCount/ number of eps files that have been written
+    int/ newframe/ blunt instrument for slowing the display
+    Random/ rand/ random class instance    
+	volatile Thread/ runner/ the simulation thread
+	Image/ backImg1/the visualisation of the experiment
+	Graphics/ backGr1/some Java thing that takes the image and makes it part of the display or something
+	CAImagePanel/ CApicture/ class used to display the changing image amidst the buttons
+	JButton/ startBtn,writeBtn,paramsBtn,wrapBtn/some self explanatory buttons
+	JTextArea/ msgBtn/ an area to hold text. Used to display the current parameters.
+	JPanel/ buttonHolder/ a panel or window that holds the four buttons in a grid
+	int/ scale/scale factor both x and y for displaying results
+	int/ iterations/holds the current time step
+	int/ gSize/physical grid size both x and y
+	int/ maxCellType/number of different cell types. 0 is a non-cell, i.e. a space
+	int/ maxit/ max number of iterations for a run
+	boolean/ started/ has a run started?
+    Colour/ palette/ palette of colours so that eps and display colours match
+	int[]/ colorindices/indices of the chosen colours
+	int /nnw/used for colour repitition
+    Color[]/javaColours/the colours in Java format
+    double[][]/ epsColours/the colours in eps rgb format
+%constructors    
+CAStatic(int size)//sets up grid size and window size. initialises windows, buttons, and other variables.
+%methods
+void /setpalette()/sets up the Java and eps colours using the colour indices
+void /saveCA()/save values from the current time step
+void /outputEPS()/make a unique eps filename and call the eps printer
+void /changeParameters()/changes experiment parameters
+void /changeWrap()/toggle the toroidal wrapping
+void /drawCA()/update the graphics image and flag a redraw
+void /start()/start the thread and update the button status
+void /stop()/stop the thread and update the button status
+void /actionPerformed(ActionEvent e)/listens for button or other window activity and processes the requests
+void /run()/run the experiment
+void/ postscriptPrint(String fileName)/pretty print the results as an eps file
+void/ initilise()/set up a fresh experiment
+void/ main(String args[])/ just kicks things off. can be given a fraction as an argument which will not be used in this program
+
+
+

@@ -1,0 +1,129 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{longtable}
+\newcommand \bt{\begin{longtable}{p{0.25\textwidth}p{0.74\textwidth}}}
+\newcommand \et{\end{longtable}}
+ 
+\usepackage[pdftex,usenames,dvipsnames]{color}
+
+\definecolor{classbg}{rgb}{0.707,0.648,0.586}
+\definecolor{fieldbg}{rgb}{0.363,0.641,0.746}
+\definecolor{conbg}{rgb}{0.711,0.793,0.836}
+\definecolor{descriptbg}{rgb}{0.848,0.918,0.953}
+
+\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault}
+
+\newcommand{\hs}{\hspace{0.5cm}}
+
+%environment for indented description
+\newenvironment{di}
+{\begin{flushright}
+\begin{minipage}{0.95\textwidth}
+\begin{description}
+}
+{\end{description}
+\end{minipage}
+\end{flushright}
+}
+
+\usepackage[hmargin=2.5cm,vmargin=2.5cm]{geometry}
+\setlength{\parindent}{0.05\textwidth}
+
+\begin{document}
+
+\noindent
+\colorbox{classbg}{\parbox{1.0\textwidth}{\Large{Class}}}
+\begin{di}
+\item[\large{CAStatic}]\qquad\\
+extends JFrame implements Runnable, ActionListener. This class contains main. It coordinates all simulation and windowing events.
+\end{di}
+\colorbox{fieldbg}{\parbox{1.0\textwidth}{\Large{Fields}}}\vspace{0.5cm}
+\bt
+\hs \textbf{experiment} & \emph{type: CAGridStatic}\\
+& \hs the current grid of cells and its activities. This is a 1D experiment\\
+\hs \textbf{savedvals} & \emph{type: int[][]}\\
+& \hs an array to save values from the time steps of the 1D experiment.\\
+\hs \textbf{runCount} & \emph{type: int}\\
+& \hs current experiment number\\
+\hs \textbf{epsCount} & \emph{type: int}\\
+& \hs number of eps files that have been written\\
+\hs \textbf{newframe} & \emph{type: int}\\
+& \hs blunt instrument for slowing the display\\
+\hs \textbf{rand} & \emph{type: Random}\\
+& \hs random class instance\\
+\hs \textbf{runner} & \emph{type: volatile Thread}\\
+& \hs the simulation thread\\
+\hs \textbf{backImg1} & \emph{type: Image}\\
+& \hs the visualisation of the experiment\\
+\hs \textbf{backGr1} & \emph{type: Graphics}\\
+& \hs some Java thing that takes the image and makes it part of the display or something\\
+\hs \textbf{CApicture} & \emph{type: CAImagePanel}\\
+& \hs class used to display the changing image amidst the buttons\\
+\hs \textbf{startBtn,writeBtn,paramsBtn,wrapBtn} & \emph{type: JButton}\\
+& \hs some self explanatory buttons\\
+\hs \textbf{msgBtn} & \emph{type: JTextArea}\\
+& \hs an area to hold text. Used to display the current parameters.\\
+\hs \textbf{buttonHolder} & \emph{type: JPanel}\\
+& \hs a panel or window that holds the four buttons in a grid\\
+\hs \textbf{scale} & \emph{type: int}\\
+& \hs scale factor both x and y for displaying results\\
+\hs \textbf{iterations} & \emph{type: int}\\
+& \hs holds the current time step\\
+\hs \textbf{gSize} & \emph{type: int}\\
+& \hs physical grid size both x and y\\
+\hs \textbf{maxCellType} & \emph{type: int}\\
+& \hs number of different cell types. 0 is a non-cell, i.e. a space\\
+\hs \textbf{maxit} & \emph{type: int}\\
+& \hs max number of iterations for a run\\
+\hs \textbf{started} & \emph{type: boolean}\\
+& \hs has a run started?\\
+\hs \textbf{palette} & \emph{type: Colour}\\
+& \hs palette of colours so that eps and display colours match\\
+\hs \textbf{colorindices} & \emph{type: int[]}\\
+& \hs indices of the chosen colours\\
+\hs \textbf{nnw} & \emph{type: int}\\
+& \hs used for colour repitition\\
+\hs \textbf{javaColours} & \emph{type: Color[]}\\
+& \hs the colours in Java format\\
+\hs \textbf{epsColours} & \emph{type: double[][]}\\
+& \hs the colours in eps rgb format\\
+\et
+\noindent\colorbox{conbg}{\parbox{1.0\textwidth}{\Large{Constructors}}}
+\begin{di}
+\item[{CAStatic(int size)}]\qquad\\
+sets up grid size and window size. initialises windows, buttons, and other variables.
+\end{di}
+\colorbox{descriptbg}{\parbox{1.0\textwidth}{\Large{Methods}}}
+\begin{di}
+\item[{setpalette()}]\emph{Returns void}\\
+sets up the Java and eps colours using the colour indices\\
+\item[{saveCA()}]\emph{Returns void}\\
+save values from the current time step\\
+\item[{outputEPS()}]\emph{Returns void}\\
+make a unique eps filename and call the eps printer\\
+\item[{changeParameters()}]\emph{Returns void}\\
+changes experiment parameters\\
+\item[{changeWrap()}]\emph{Returns void}\\
+toggle the toroidal wrapping\\
+\item[{drawCA()}]\emph{Returns void}\\
+update the graphics image and flag a redraw\\
+\item[{start()}]\emph{Returns void}\\
+start the thread and update the button status\\
+\item[{stop()}]\emph{Returns void}\\
+stop the thread and update the button status\\
+\item[{actionPerformed(ActionEvent e)}]\emph{Returns void}\\
+listens for button or other window activity and processes the requests\\
+\end{di}
+\begin{di}
+\item[{run()}]\emph{Returns void}\\
+run the experiment\\
+\item[{postscriptPrint(String fileName)}]\emph{Returns void}\\
+pretty print the results as an eps file\\
+\item[{initilise()}]\emph{Returns void}\\
+set up a fresh experiment\\
+\item[{main(String args[])}]\emph{Returns void}\\
+just kicks things off. can be given a fraction as an argument which will not be used in this program\\
+\end{di}
+
+\end{document}

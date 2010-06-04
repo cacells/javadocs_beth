@@ -1,0 +1,68 @@
+\documentclass[11pt,a4paper]{article}
+
+\newcommand \bt{\begin{tabular*}{0.99\textwidth}{p{0.25\textwidth}p{0.74\textwidth}}}
+\newcommand \et{\end{tabular*}\\}
+ 
+\usepackage[pdftex,usenames,dvipsnames]{color}
+
+\definecolor{classbg}{rgb}{0.707,0.648,0.586}
+\definecolor{fieldbg}{rgb}{0.363,0.641,0.746}
+\definecolor{conbg}{rgb}{0.711,0.793,0.836}
+\definecolor{descriptbg}{rgb}{0.848,0.918,0.953}
+
+\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault}
+
+\newcommand{\hs}{\hspace{0.5cm}}
+
+%environment for indented description
+\newenvironment{di}
+{\begin{flushright}
+\begin{minipage}{0.95\textwidth}
+\begin{description}
+}
+{\end{description}
+\end{minipage}
+\end{flushright}
+}
+
+\usepackage[hmargin=2.5cm,vmargin=2.5cm]{geometry}
+\setlength{\parindent}{0.05\textwidth}
+
+\begin{document}
+
+\noindent
+\colorbox{classbg}{\parbox{1.0\textwidth}{\Large{Class}}}
+\begin{di}
+\item[\large{CAImagePanel}]\qquad\\
+extends JPanel. Taken from some of Ric's code. Required to properly display and update the image amidst the buttons.
+\end{di}
+\colorbox{fieldbg}{\parbox{1.0\textwidth}{\Large{Fields}}}\vspace{0.5cm}
+\bt
+\hs \textbf{backImg} & \emph{type: Image}\\
+& \hs a Java thing\\
+\hs \textbf{backGr as above} & \emph{type: Graphics}\\
+& \hs \\
+\hs \textbf{colums, rows} & \emph{type: int}\\
+& \hs size of the output to be displayed\\
+\hs \textbf{xScale, yScale} & \emph{type: int}\\
+& \hs scale factors for displaying the output\\
+\et
+\\\colorbox{conbg}{\parbox{1.0\textwidth}{\Large{Constructors}}}
+\colorbox{descriptbg}{\parbox{1.0\textwidth}{\Large{Methods}}}
+\begin{di}
+\item[setScale(int noColums,int noRows, int scale)]\emph{Returns void}\\
+set image size. can't be done in a constructor for some reason.\\
+\item[clearCAPanel]\emph{Returns void}\\
+clear the image\\
+\item[drawCircleAt(int x, int y, Color colour)]\emph{Returns void}\\
+draw a circle on the image to represent a cell\\
+\item[updateGraphic()]\emph{Returns void}\\
+update the displayed or displayable image with the current image\\
+\item[paintComponent(Graphics g)]\emph{Returns void}\\
+from Ric just calls updateGraphics. overrides something.\\
+\item[paint(Graphics g)]\emph{Returns void}\\
+from Ric just calls uodateGraphics. overrides something.\\
+\end{di}
+
+\end{document}

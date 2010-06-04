@@ -1,0 +1,81 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{longtable}
+\newcommand \bt{\begin{longtable}{p{0.25\textwidth}p{0.74\textwidth}}}
+\newcommand \et{\end{longtable}}
+ 
+\usepackage[pdftex,usenames,dvipsnames]{color}
+
+\definecolor{classbg}{rgb}{0.707,0.648,0.586}
+\definecolor{fieldbg}{rgb}{0.363,0.641,0.746}
+\definecolor{conbg}{rgb}{0.711,0.793,0.836}
+\definecolor{descriptbg}{rgb}{0.848,0.918,0.953}
+
+\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault}
+
+\newcommand{\hs}{\hspace{0.5cm}}
+
+%environment for indented description
+\newenvironment{di}
+{\begin{flushright}
+\begin{minipage}{0.95\textwidth}
+\begin{description}
+}
+{\end{description}
+\end{minipage}
+\end{flushright}
+}
+
+\usepackage[hmargin=2.5cm,vmargin=2.5cm]{geometry}
+\setlength{\parindent}{0.05\textwidth}
+
+\begin{document}
+
+\noindent
+\colorbox{classbg}{\parbox{1.0\textwidth}{\Large{Class}}}
+\begin{di}
+\item[\large{CACell}]\qquad\\
+this class describes the cell and its state, and has methods to update the cell's state
+\end{di}
+\colorbox{fieldbg}{\parbox{1.0\textwidth}{\Large{Fields}}}\vspace{0.5cm}
+\bt
+\hs \textbf{maxCycle} & \emph{type: int}\\
+& \hs this sets the CAmax to 4 (see type)\\
+\hs \textbf{rand} & \emph{type: Random}\\
+& \hs random variable\\
+\hs \textbf{canMoveLeft} & \emph{type: boolean}\\
+& \hs keep track of the state of the cell\\
+\hs \textbf{canMoveRight} & \emph{type: boolean}\\
+& \hs ditto\\
+\hs \textbf{canStay} & \emph{type: boolean}\\
+& \hs ditto\\
+\hs \textbf{Available} & \emph{type: boolean}\\
+& \hs keep track of the state of the cell\\
+\hs \textbf{type} & \emph{type: int}\\
+& \hs type of cell: 0 = space, 1 = SC, 2=CA\_1....5=CA\_4\\
+\hs \textbf{home} & \emph{type: CABoxStatic}\\
+& \hs The box the cell sits in\\
+\hs \textbf{stain} & \emph{type: double}\\
+& \hs could be used to indicate age\\
+\hs \textbf{scRate} & \emph{type: double}\\
+& \hs Relative SC proliferaion rate if scRate = 0.5 SC proliferaion rate would be half CA rate\\
+\hs \textbf{lineage} & \emph{type: int}\\
+& \hs unique number for each cell in the initial set\\
+\et
+\noindent\colorbox{conbg}{\parbox{1.0\textwidth}{\Large{Constructors}}}
+\begin{di}
+\item[{CACell(CABoxStatic home,int lin)}]\qquad\\
+gives the cell a home, a lineage, a stain of zero, and makes the home unavailable
+\end{di}
+\colorbox{descriptbg}{\parbox{1.0\textwidth}{\Large{Methods}}}
+\begin{di}
+\item[{maintain(ParamVals params)}]\emph{Returns void}\\
+Determines if a Cell can detach or grow and sets counters\\
+\item[{growth(CACell cHold)}]\emph{Returns void}\\
+Growth occurs into cell\\
+\item[{grow()}]\emph{Returns boolean}\\
+given movement left or right checks for space and moves\\
+\end{di}
+
+\end{document}

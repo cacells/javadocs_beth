@@ -1,0 +1,66 @@
+\documentclass[11pt,a4paper]{article}
+
+\newcommand \bt{\begin{tabular*}{0.99\textwidth}{p{0.25\textwidth}p{0.74\textwidth}}}
+\newcommand \et{\end{tabular*}\\}
+ 
+\usepackage[pdftex,usenames,dvipsnames]{color}
+
+\definecolor{classbg}{rgb}{0.707,0.648,0.586}
+\definecolor{fieldbg}{rgb}{0.363,0.641,0.746}
+\definecolor{conbg}{rgb}{0.711,0.793,0.836}
+\definecolor{descriptbg}{rgb}{0.848,0.918,0.953}
+
+\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault}
+
+\newcommand{\hs}{\hspace{0.5cm}}
+
+%environment for indented description
+\newenvironment{di}
+{\begin{flushright}
+\begin{minipage}{0.95\textwidth}
+\begin{description}
+}
+{\end{description}
+\end{minipage}
+\end{flushright}
+}
+
+\usepackage[hmargin=2.5cm,vmargin=2.5cm]{geometry}
+\setlength{\parindent}{0.05\textwidth}
+
+\begin{document}
+
+\noindent
+\colorbox{classbg}{\parbox{1.0\textwidth}{\Large{Class}}}
+\begin{di}
+\item[\large{CAGridStatic}]\qquad\\
+This is the main part of the simulation of the CA version of the model
+\end{di}
+\colorbox{fieldbg}{\parbox{1.0\textwidth}{\Large{Fields}}}\vspace{0.5cm}
+\bt
+\hs \textbf{tissue} & \emph{type: ArrayList $<$CACell$>$}\\
+& \hs List of cells that make up the tissue\\
+\hs \textbf{params} & \emph{type: ParamVals}\\
+& \hs parameters of the experiment\\
+\hs \textbf{rand} & \emph{type: Random}\\
+& \hs random class\\
+\et
+\\\colorbox{conbg}{\parbox{1.0\textwidth}{\Large{Constructors}}}
+\begin{di}
+\item[CAGridStatic(int size)]\qquad\\
+Create new instance of simulation with size of grid maximum CA cycle and fraction of stem cells
+\end{di}
+\colorbox{descriptbg}{\parbox{1.0\textwidth}{\Large{Methods}}}
+\begin{di}
+\item[bounds(int a,int size)]\emph{Returns int}\\
+Creates the toroidal links between top and bottom and left and right\\
+\item[stain()]\emph{Returns void}\\
+Stains all cells in the tissue list\\
+\item[setNewGridParams]\emph{Returns void}\\
+set grid params such as probability of moving right\\
+\item[iterate]\emph{Returns void}\\
+The main iterative loop of the simulation. Update tissue status then move randomly through.\\
+\end{di}
+
+\end{document}

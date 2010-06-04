@@ -1,0 +1,15 @@
+%class
+CABoxStatic//boxes or homes for the cells
+%fields
+Random/rand/random variable  
+CACell/occupant/ The cell in this box
+int/x,y/grid cordinates of the box
+ArrayList<CABoxStatic>/neighbours/list of neighbouring Boxes
+%constructors
+CABoxStatic(int x, int y)// This constructor sets the x,y, coords of this box and initialises the array of neighbours, but does NOT add any neighbours
+%methods
+CACell/getNeighbour(int n)/returns the cell in neighbouring position n
+void/addNeighbour(CABoxStatic newNeighbour)/Adds a neighbour to the ArrayList (used by CAGridStatic)
+
+
+

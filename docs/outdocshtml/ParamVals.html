@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Class ParamVals</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="class.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<table width="100%"  border="0" cellspacing="1" class="tabletype1" valign="top" >
+  <tr class="CHdr">
+    <td colspan="2">Class</td>
+  </tr>
+  <tr>
+    <td class="indent hdr ftr">ParamVals</td>
+	<td class="hdr ftr">
+	  holds experiment parameters</td>
+  </tr>
+  </tr>
+  <tr class=FHdr>
+    <td colspan="2">Fields</td>
+  </tr>
+  <tr>
+    <td class="indent hdr"> pr,pl,ps </td>
+    <td class="hdr"> <i>Type: double </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;probabilities of moving </td>
+  </tr>
+  <tr>
+    <td class="indent"> twoPlaces</td>
+    <td> <i>Type:  DecimalFormat </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; static. for pretty printing of floats with 2 d.p. </td>
+  </tr>
+  <tr>
+    <td class="indent"> asPercent</td>
+    <td> <i>Type: DecimalFormat </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; static. for pretty printing of percentages </td>
+  </tr>
+  <tr>
+    <td class="indent ftr"> nowrap</td>
+    <td class="ftr"> <i>Type: boolean </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; static concerned with the toroidal wrapping </td>
+  </tr>
+  <tr class="ConHdr">
+    <td colspan="2">Constructors</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">ParamVals()</td>
+    <td class="hdr">sets default probabilities </td>
+  </tr>
+  <tr>
+    <td class="indent ftr">ParamVals(BufferedReader input)</td>
+    <td class="ftr">set parameter values using a buffered input from the console. Used before the program had buttons. </td>
+  </tr>
+  <tr class="MHdr">
+    <td colspan="2">Methods</td>
+  </tr>
+  <tr>
+    <td class="indent hdr"> SetParamVals()</td>
+    <td class="hdr"> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set parameter values using popup dialog boxes. The currently used method for setting and resetting parameters. </td>
+  </tr>
+  <tr>
+    <td class="indent"> SetParamVals<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(double dpr,double dpl)</td>
+    <td> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;manually set parameter values. note: these are not checked for validity </td>
+  </tr>
+  <tr>
+    <td class="indent"> changeProbabilities()</td>
+    <td> <i>Return Type: int </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;change probabilities using dialog to console and reading from console but not buffered. Used before the program had buttons. </td>
+  </tr>
+  <tr>
+    <td class="indent"> toString()</td>
+    <td> <i>Return Type: String </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for printing the parameters </td>
+  </tr>
+  <tr>
+    <td class="indent"> filename()</td>
+    <td> <i>Return Type: String </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;make the parameters into a string that can be part of a filename </td>
+  </tr>
+  <tr>
+    <td class="indent ftr"> readdouble<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(BufferedReader input,String question)</td>
+    <td class="ftr"> <i>Return Type: double </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ask a question to console and read input from there using buffered reader </td>
+  </tr>
+</table>
+</body>
+</html>
+
