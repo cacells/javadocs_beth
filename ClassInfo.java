@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-	public class Class2HTML{
+	public class ClassInfo{
 		thingInfo classInfo = new thingInfo();
 		ArrayList<thingInfo> fieldInfo = new ArrayList<thingInfo>();
 		ArrayList<thingInfo> constructorInfo = new ArrayList<thingInfo>();
@@ -27,12 +27,12 @@ import javax.swing.JOptionPane;
 	
 
 		//default constructor		
-		public Class2HTML(){
+		public ClassInfo(){
 			//don't know what 2 put here
 		}
 		
 		//constructor that reads input from file		
-		public Class2HTML(String fname,boolean swap){
+		public ClassInfo(String fname,boolean swap){
 			if (fname.length() == 0) {
 
 				ArrayList<String> wasreadIn = new ArrayList<String>();
@@ -116,7 +116,7 @@ import javax.swing.JOptionPane;
 			makeFilenames();
 		}
 
-		public Class2HTML(Class2HTML orig){
+		public ClassInfo(ClassInfo orig){
 			//copy constructor - but only copies strings
 			//first copy classinfo thinginfo
 			classInfo.cloneVals(orig.classInfo);
@@ -159,7 +159,7 @@ import javax.swing.JOptionPane;
     	    
 			
 		}
-		public void resetVals(Class2HTML orig){
+		public void resetVals(ClassInfo orig){
 			//reset the strings to those from orig
 			//first copy classinfo
 

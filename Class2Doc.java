@@ -1,7 +1,7 @@
 import javax.swing.JOptionPane;
 
 
-public class ClassWriter {
+public class Class2Doc {
 
 	/**
 	 * @param args

@@ -2,14 +2,14 @@ import java.util.regex.Matcher;
 
 
 public class ClassPrinter {
-	Class2HTML c;//define a copy because we need to filter
+	ClassInfo c;//define a copy because we need to filter
 	boolean changedOrig = false;//to see if it has been changed
 	public static String dnt = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";//indent
 	//beware: no default constructor
-	public ClassPrinter(Class2HTML orig){
-		c = new Class2HTML(orig);
+	public ClassPrinter(ClassInfo orig){
+		c = new ClassInfo(orig);
 	}
-	public void printHTML(Class2HTML classy){
+	public void printHTML(ClassInfo classy){
 		//reset the copied vals if necessary
 		if (changedOrig) {
 			c.resetVals(classy);
@@ -168,7 +168,7 @@ public class ClassPrinter {
 		}
 	}
 
-	public void printHTML2col(Class2HTML classy){
+	public void printHTML2col(ClassInfo classy){
 		if (changedOrig) {
 			changedOrig = false;
 			c.resetVals(classy);
@@ -341,7 +341,7 @@ public class ClassPrinter {
 		}
 	}
 	
-	public void printCSS(Class2HTML classy){
+	public void printCSS(ClassInfo classy){
         String fileName = classy.baseDirname+"/outdocshtml/"+classy.cssFilename;
 		try {
 			java.io.FileWriter file = new java.io.FileWriter(fileName);
@@ -400,7 +400,7 @@ public class ClassPrinter {
 		}
 	}
 
-	public void printLaTeX(Class2HTML classy){
+	public void printLaTeX(ClassInfo classy){
 		if (changedOrig) {
 			changedOrig = false;
 			c.resetVals(classy);
@@ -494,7 +494,7 @@ public class ClassPrinter {
 			System.out.println(e.toString());
 		}
 	}
-	public void printCSS2col(Class2HTML classy){
+	public void printCSS2col(ClassInfo classy){
         String fileName = classy.baseDirname+"/outdocshtml/"+classy.cssFilename;
 		try {
 			java.io.FileWriter file = new java.io.FileWriter(fileName);
