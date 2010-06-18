@@ -110,7 +110,7 @@ public class thingInfo {
 		}
 		if (fi< len) stringBits.add(msg.substring(fi,len));
 		}
-		System.out.println("substrings "+stringBits);
+		//System.out.println("substrings "+stringBits);
 		return stringBits;
 	}
 }
