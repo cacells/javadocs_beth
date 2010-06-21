@@ -1,4 +1,3 @@
-import java.io.File;
 import java.util.regex.Matcher;
 
 
@@ -476,7 +475,7 @@ public class ClassPrinter {
 			buffer.write("\\et\n");
 	        }
 			//constructors
-			buffer.write("\n\\noindent\\colorbox{conbg}{\\parbox{1.0\\textwidth}{\\Large{Constructors}}}\n");		
+			buffer.write("\\noindent\\colorbox{conbg}{\\parbox{1.0\\textwidth}{\\Large{Constructors}}}\n");		
 			if (!c.constructorInfo.isEmpty()){
 			buffer.write("\\begin{di}\n");
 			for (thingInfo f:c.constructorInfo){
@@ -630,11 +629,11 @@ public class ClassPrinter {
 		String[] replacement = {"&lt;","&gt;"};
 		changedOrig = true;
 		for (int i=0;i<toFind.length;i++){
-			t.name = t.name.replaceAll(toFind[i],replacement[i]).trim();
-			t.type = t.type.replaceAll(toFind[i],replacement[i]).trim();
+			t.name = t.name.replaceAll(toFind[i],replacement[i]);
+			t.type = t.type.replaceAll(toFind[i],replacement[i]);
 			//and capitalise the sentences!!!
 			if (t.descript.length() > 0){
-				t.descript = t.descript.replaceAll(toFind[i],replacement[i]).trim();
+				t.descript = t.descript.replaceAll(toFind[i],replacement[i]);
 			    t.descript = t.descript.substring(0,1).toUpperCase()+t.descript.substring(1);
 			}
 		}

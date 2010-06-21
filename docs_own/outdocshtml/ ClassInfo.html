@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Class  ClassInfo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="class_style_1.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<table width="100%"  border="0" cellspacing="1" class="tabletype1" valign="top" >
+  <tr class="CHdr">
+    <td colspan="2">Class</td>
+  </tr>
+  <tr>
+    <td class="indent hdr ftr midcol">ClassInfo</td>
+	<td class="hdr ftr">
+	  Creates a structure to hold info describing a class, and reads the info from interactive popups or from a file. A single thingInfo holds the class name and description. Array lists of thingInfo hold the names, types, and descriptions of the fields, the constructors, and the methods.</td>
+  </tr>
+  </tr>
+  <tr class=FHdr>
+    <td colspan="2">Fields</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">classInfo</td>
+    <td class="hdr"> <i>Type: thingInfo </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class name and description. Does not use the type field of thingInfo. </td>
+  </tr>
+  <tr>
+    <td class="indent">fieldInfo</td>
+    <td> <i>Type: ArrayList&lt;thingInfo&gt; </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array list of field names, types, and descriptions </td>
+  </tr>
+  <tr>
+    <td class="indent">constructorInfo</td>
+    <td> <i>Type: ArrayList&lt;thingInfo&gt; </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array list of constructor names and descriptions. Does not use the type field of thingInfo. </td>
+  </tr>
+  <tr>
+    <td class="indent">methodInfo</td>
+    <td> <i>Type: ArrayList&lt;thingInfo&gt; </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array list of method names, return types, and descriptions </td>
+  </tr>
+  <tr>
+    <td class="indent">baseFilename</td>
+    <td> <i>Type: String </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Base file name constructed from the class name </td>
+  </tr>
+  <tr>
+    <td class="indent">cssFilename</td>
+    <td> <i>Type: String </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File name for the style sheet </td>
+  </tr>
+  <tr>
+    <td class="indent">baseDirname</td>
+    <td> <i>Type: String </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name of directory holding the input file </td>
+  </tr>
+  <tr>
+    <td class="indent">htmlFilename</td>
+    <td> <i>Type: String </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File name for the HTML file </td>
+  </tr>
+  <tr>
+    <td class="indent">latexFilename</td>
+    <td> <i>Type: String </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File name for the LaTex file </td>
+  </tr>
+  <tr>
+    <td class="indent">needsCSSwritten</td>
+    <td> <i>Type: boolean </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True unless an existing css file is found </td>
+  </tr>
+  <tr>
+    <td class="indent ftr">swapit</td>
+    <td class="ftr"> <i>Type: boolean </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Indicates order of the type and name information for fields and methods </td>
+  </tr>
+  <tr class="ConHdr">
+    <td colspan="2">Constructors</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">ClassInfo<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(String fname,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String dirname,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean swap)</td>
+    <td class="hdr">Reads input from either a file or from popup dialogs </td>
+  </tr>
+  <tr>
+    <td class="indent ftr">ClassInfo(ClassInfo orig)</td>
+    <td class="ftr">Copy constructor, but only copying strings so that they might be filtered for latex or html reserved characters </td>
+  </tr>
+  <tr class="MHdr">
+    <td colspan="2">Methods</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">makeFilenames()</td>
+    <td class="hdr"> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Creates the filenames and directories and determines whether a css file is present </td>
+  </tr>
+  <tr>
+    <td class="indent">resetVals(ClassInfo orig)</td>
+    <td> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clones the strings from orig. Used to reset filtered strings to the original values </td>
+  </tr>
+  <tr>
+    <td class="indent">SetParamVals<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(String msg,int maxit)</td>
+    <td> <i>Return Type: ArrayList&lt;String&gt; </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use a dialog to get a number of strings containing information </td>
+  </tr>
+  <tr>
+    <td class="indent ftr">breakItUp(String msg)</td>
+    <td class="ftr"> <i>Return Type: ArrayList&lt;String&gt; </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Break up a string into a number of substrings at each forward slash delimiter </td>
+  </tr>
+</table>
+</body>
+</html>
+

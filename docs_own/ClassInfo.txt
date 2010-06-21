@@ -1,0 +1,22 @@
+%class
+ ClassInfo// Creates a structure to hold info describing a class, and reads the info from interactive popups or from a file. A single thingInfo holds the class name and description. Array lists of thingInfo hold the names, types, and descriptions of the fields, the constructors, and the methods.
+%field
+thingInfo/classInfo/class name and description. Does not use the type field of thingInfo.
+ArrayList<thingInfo>/fieldInfo/Array list of field names, types, and descriptions
+ArrayList<thingInfo>/constructorInfo/Array list of constructor names and descriptions. Does not use the type field of thingInfo.
+ArrayList<thingInfo>/methodInfo/Array list of method names, return types, and descriptions
+String/baseFilename/base file name constructed from the class name
+String/cssFilename/File name for the style sheet
+String/baseDirname/name of directory holding the input file
+String/htmlFilename/file name for the HTML file
+String/latexFilename/file name for the LaTex file
+boolean/needsCSSwritten/True unless an existing css file is found
+boolean/swapit/Indicates order of the type and name information for fields and methods
+%constructor
+ClassInfo(String fname,String dirname,boolean swap)//Reads input from either a file or from popup dialogs
+ClassInfo(ClassInfo orig)//copy constructor, but only copying strings so that they might be filtered for latex or html reserved characters
+%methods
+void/makeFilenames()/Creates the filenames and directories and determines whether a css file is present
+void/resetVals(ClassInfo orig)/clones the strings from orig. Used to reset filtered strings to the original values
+ArrayList<String>/SetParamVals(String msg,int maxit)/Use a dialog to get a number of strings containing information
+ArrayList<String>/breakItUp(String msg)/break up a string into a number of substrings at each forward slash delimiter

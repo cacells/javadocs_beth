@@ -20,12 +20,12 @@ import javax.swing.JOptionPane;
 		ArrayList<thingInfo> fieldInfo = new ArrayList<thingInfo>();
 		ArrayList<thingInfo> constructorInfo = new ArrayList<thingInfo>();
 		ArrayList<thingInfo> methodInfo = new ArrayList<thingInfo>();
-		String cssFilename = "untitled.css";
+		String cssFilename = "class_style_1.css";
 		String baseFilename = "";
 		String baseDirname = ".";
 		String htmlFilename = "untitled.html";
 		String latexFilename = "untitled.tex";
-		boolean needsCSSwritten = false;
+		boolean needsCSSwritten = true;
 		boolean swapit = false;
 		
 		//constructor that reads input from a file or from popups		
@@ -121,17 +121,23 @@ import javax.swing.JOptionPane;
 		
 		public void makeFilenames(){
 			baseFilename=classInfo.name;
+			/* this is for a variable cssFilename
 			cssFilename = JOptionPane.showInputDialog("Enter Name of existing CSS file or press return");		
 			if (cssFilename.length() == 0 ) {
 				needsCSSwritten=true;
 				cssFilename = classInfo.name+".css";
-			}
+			}*/
 			 //assume we have a baseDirname
 			//make the htmldir
 			File htmldir = new File(baseDirname+"/outdocshtml");
+  	        System.out.println("Directory: " + htmldir + " created");
     	    boolean success = htmldir.mkdir();
+    	    File cssFile = new File (htmldir+"/"+cssFilename);
+    	    if (cssFile.exists()){
+    	    	needsCSSwritten=false;
+    	    }
     	    //if (success) {
-    	      System.out.println("Directory: " + htmldir + " created");
+
     	    //} 
 			//make the latexdir
 			File latexdir = new File(baseDirname+"/outdocslatex");

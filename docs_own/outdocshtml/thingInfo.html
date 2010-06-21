@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Class thingInfo</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="class_style_1.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+<table width="100%"  border="0" cellspacing="1" class="tabletype1" valign="top" >
+  <tr class="CHdr">
+    <td colspan="2">Class</td>
+  </tr>
+  <tr>
+    <td class="indent hdr ftr midcol">thingInfo</td>
+	<td class="hdr ftr">
+	  Classes are a collection of things that have name, type and description. For instance a variable (field) has a name, type, and may be described. A method has a name, a return type, and may also be described. So, thingInfo is a Class to store a collection of three strings called name, type, and description.</td>
+  </tr>
+  </tr>
+  <tr class=FHdr>
+    <td colspan="2">Fields</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">name</td>
+    <td class="hdr"> <i>Type: String </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name of the thing </td>
+  </tr>
+  <tr>
+    <td class="indent">type</td>
+    <td> <i>Type: String </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A type associated with the thing. e.g. if the thing is a field then type might be boolean. If the thing is a method, then the type would be the return type of the method, e.g. void. Type is not used for class things or constructor things. </td>
+  </tr>
+  <tr>
+    <td class="indent ftr">descript</td>
+    <td class="ftr"> <i>Type: String </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A description of the thing. </td>
+  </tr>
+  <tr class="ConHdr">
+    <td colspan="2">Constructors</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">thingInfo()</td>
+    <td class="hdr">Default constructor sets empty strings </td>
+  </tr>
+  <tr>
+    <td class="indent">thingInfo(String allinfo)</td>
+    <td >Constructor to set the fields from a single input string which holds name, type, and description separated by forward slashes. The order of the info must be correct. </td>
+  </tr>
+  <tr>
+    <td class="indent">thingInfo<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(String allinfo,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boolean swapit)</td>
+    <td >Constructor to set the fields from a single input string. The boolean swapit determines whether the fields are in standard format (name before type) or in swapped format (type before name). </td>
+  </tr>
+  <tr>
+    <td class="indent">thingInfo<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(String thename,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String thetype,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String thedescript)</td>
+    <td >Unused constructor </td>
+  </tr>
+  <tr>
+    <td class="indent ftr">thingInfo(thingInfo orig)</td>
+    <td class="ftr">Copy constructor </td>
+  </tr>
+  <tr class="MHdr">
+    <td colspan="2">Methods</td>
+  </tr>
+  <tr>
+    <td class="indent hdr">cloneVals(thingInfo orig)</td>
+    <td class="hdr"> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copy field values from orig </td>
+  </tr>
+  <tr>
+    <td class="indent">setValsFromString<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(String allinfo)</td>
+    <td> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the field values from a forward slash delimited string </td>
+  </tr>
+  <tr>
+    <td class="indent">setName(String thename)</td>
+    <td> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the name field </td>
+  </tr>
+  <tr>
+    <td class="indent">setType(String thetype)</td>
+    <td> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the type field </td>
+  </tr>
+  <tr>
+    <td class="indent">setDescript<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(String thedescript)</td>
+    <td> <i>Return Type: void </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set the description field </td>
+  </tr>
+  <tr>
+    <td class="indent">toString()</td>
+    <td> <i>Return Type: String </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a string for printing </td>
+  </tr>
+  <tr>
+    <td class="indent ftr">breakItUp(String msg)</td>
+    <td class="ftr"> <i>Return Type: ArrayList&lt;String&gt; </i><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Break a string into fields at each slash separator. </td>
+  </tr>
+</table>
+</body>
+</html>
+

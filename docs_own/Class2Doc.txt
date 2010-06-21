@@ -1,0 +1,4 @@
+%class
+Class2Doc// main program creating the class information structures and calling the required printers
+%methods
+void/main(String[] args) / generates the file and directory names, creates info instance and printer instance, and calls the printing methods

@@ -1,0 +1,86 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{longtable}
+\newcommand \bt{\begin{longtable}{p{0.25\textwidth}p{0.74\textwidth}}}
+\newcommand \et{\end{longtable}}
+ 
+\usepackage[pdftex,usenames,dvipsnames]{color}
+
+\definecolor{classbg}{rgb}{0.707,0.648,0.586}
+\definecolor{fieldbg}{rgb}{0.363,0.641,0.746}
+\definecolor{conbg}{rgb}{0.711,0.793,0.836}
+\definecolor{descriptbg}{rgb}{0.848,0.918,0.953}
+
+\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault}
+
+\newcommand{\hs}{\hspace{0.5cm}}
+
+%environment for indented description
+\newenvironment{di}
+{\begin{flushright}
+\begin{minipage}{0.95\textwidth}
+\begin{description}
+}
+{\end{description}
+\end{minipage}
+\end{flushright}
+}
+
+\usepackage[hmargin=2.5cm,vmargin=2.5cm]{geometry}
+\setlength{\parindent}{0.05\textwidth}
+
+\begin{document}
+
+\noindent
+\colorbox{classbg}{\parbox{1.0\textwidth}{\Large{Class}}}
+\begin{di}
+\item[\large{ClassInfo}]\qquad\\
+Creates a structure to hold info describing a class, and reads the info from interactive popups or from a file. A single thingInfo holds the class name and description. Array lists of thingInfo hold the names, types, and descriptions of the fields, the constructors, and the methods.
+\end{di}
+\colorbox{fieldbg}{\parbox{1.0\textwidth}{\Large{Fields}}}\vspace{0.5cm}
+\bt
+\hs \textbf{classInfo} & \emph{type: thingInfo}\\
+& \hs Class name and description. Does not use the type field of thingInfo.\\
+\hs \textbf{fieldInfo} & \emph{type: ArrayList$<$thingInfo$>$}\\
+& \hs Array list of field names, types, and descriptions\\
+\hs \textbf{constructorInfo} & \emph{type: ArrayList$<$thingInfo$>$}\\
+& \hs Array list of constructor names and descriptions. Does not use the type field of thingInfo.\\
+\hs \textbf{methodInfo} & \emph{type: ArrayList$<$thingInfo$>$}\\
+& \hs Array list of method names, return types, and descriptions\\
+\hs \textbf{baseFilename} & \emph{type: String}\\
+& \hs Base file name constructed from the class name\\
+\hs \textbf{cssFilename} & \emph{type: String}\\
+& \hs File name for the style sheet\\
+\hs \textbf{baseDirname} & \emph{type: String}\\
+& \hs Name of directory holding the input file\\
+\hs \textbf{htmlFilename} & \emph{type: String}\\
+& \hs File name for the HTML file\\
+\hs \textbf{latexFilename} & \emph{type: String}\\
+& \hs File name for the LaTex file\\
+\hs \textbf{needsCSSwritten} & \emph{type: boolean}\\
+& \hs True unless an existing css file is found\\
+\hs \textbf{swapit} & \emph{type: boolean}\\
+& \hs Indicates order of the type and name information for fields and methods\\
+\et
+
+\noindent\colorbox{conbg}{\parbox{1.0\textwidth}{\Large{Constructors}}}
+\begin{di}
+\item[{ClassInfo(String fname,String dirname,boolean swap)}]\qquad\\
+Reads input from either a file or from popup dialogs
+\item[{ClassInfo(ClassInfo orig)}]\qquad\\
+Copy constructor, but only copying strings so that they might be filtered for latex or html reserved characters
+\end{di}
+\colorbox{descriptbg}{\parbox{1.0\textwidth}{\Large{Methods}}}
+\begin{di}
+\item[{makeFilenames()}]\emph{Returns void}\\
+Creates the filenames and directories and determines whether a css file is present\\
+\item[{resetVals(ClassInfo orig)}]\emph{Returns void}\\
+Clones the strings from orig. Used to reset filtered strings to the original values\\
+\item[{SetParamVals(String msg,int maxit)}]\emph{Returns ArrayList$<$String$>$}\\
+Use a dialog to get a number of strings containing information\\
+\item[{breakItUp(String msg)}]\emph{Returns ArrayList$<$String$>$}\\
+Break up a string into a number of substrings at each forward slash delimiter\\
+\end{di}
+
+\end{document}

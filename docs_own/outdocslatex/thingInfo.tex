@@ -1,0 +1,82 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{longtable}
+\newcommand \bt{\begin{longtable}{p{0.25\textwidth}p{0.74\textwidth}}}
+\newcommand \et{\end{longtable}}
+ 
+\usepackage[pdftex,usenames,dvipsnames]{color}
+
+\definecolor{classbg}{rgb}{0.707,0.648,0.586}
+\definecolor{fieldbg}{rgb}{0.363,0.641,0.746}
+\definecolor{conbg}{rgb}{0.711,0.793,0.836}
+\definecolor{descriptbg}{rgb}{0.848,0.918,0.953}
+
+\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault}
+
+\newcommand{\hs}{\hspace{0.5cm}}
+
+%environment for indented description
+\newenvironment{di}
+{\begin{flushright}
+\begin{minipage}{0.95\textwidth}
+\begin{description}
+}
+{\end{description}
+\end{minipage}
+\end{flushright}
+}
+
+\usepackage[hmargin=2.5cm,vmargin=2.5cm]{geometry}
+\setlength{\parindent}{0.05\textwidth}
+
+\begin{document}
+
+\noindent
+\colorbox{classbg}{\parbox{1.0\textwidth}{\Large{Class}}}
+\begin{di}
+\item[\large{thingInfo}]\qquad\\
+Classes are a collection of things that have name, type and description. For instance a variable (field) has a name, type, and may be described. A method has a name, a return type, and may also be described. So, thingInfo is a Class to store a collection of three strings called name, type, and description.
+\end{di}
+\colorbox{fieldbg}{\parbox{1.0\textwidth}{\Large{Fields}}}\vspace{0.5cm}
+\bt
+\hs \textbf{name} & \emph{type: String}\\
+& \hs Name of the thing\\
+\hs \textbf{type} & \emph{type: String}\\
+& \hs A type associated with the thing. e.g. if the thing is a field then type might be boolean. If the thing is a method, then the type would be the return type of the method, e.g. void. Type is not used for class things or constructor things.\\
+\hs \textbf{descript} & \emph{type: String}\\
+& \hs A description of the thing.\\
+\et
+
+\noindent\colorbox{conbg}{\parbox{1.0\textwidth}{\Large{Constructors}}}
+\begin{di}
+\item[{thingInfo()}]\qquad\\
+Default constructor sets empty strings
+\item[{thingInfo(String allinfo)}]\qquad\\
+Constructor to set the fields from a single input string which holds name, type, and description separated by forward slashes. The order of the info must be correct.
+\item[{thingInfo(String allinfo,boolean swapit)}]\qquad\\
+Constructor to set the fields from a single input string. The boolean swapit determines whether the fields are in standard format (name before type) or in swapped format (type before name).
+\item[{thingInfo(String thename,String thetype,String thedescript)}]\qquad\\
+Unused constructor
+\item[{thingInfo(thingInfo orig)}]\qquad\\
+Copy constructor
+\end{di}
+\colorbox{descriptbg}{\parbox{1.0\textwidth}{\Large{Methods}}}
+\begin{di}
+\item[{cloneVals(thingInfo orig)}]\emph{Returns void}\\
+Copy field values from orig\\
+\item[{setValsFromString(String allinfo)}]\emph{Returns void}\\
+Set the field values from a forward slash delimited string\\
+\item[{setName(String thename)}]\emph{Returns void}\\
+Set the name field\\
+\item[{setType(String thetype)}]\emph{Returns void}\\
+Set the type field\\
+\item[{setDescript(String thedescript)}]\emph{Returns void}\\
+Set the description field\\
+\item[{toString()}]\emph{Returns String}\\
+Returns a string for printing\\
+\item[{breakItUp(String msg)}]\emph{Returns ArrayList$<$String$>$}\\
+Break a string into fields at each slash separator.\\
+\end{di}
+
+\end{document}
