@@ -475,7 +475,7 @@ public class ClassPrinter {
 			buffer.write("\\et\n");
 	        }
 			//constructors
-			buffer.write("\\noindent\\colorbox{conbg}{\\parbox{1.0\\textwidth}{\\Large{Constructors}}}\n");		
+			buffer.write("\n\\noindent\\colorbox{conbg}{\\parbox{1.0\\textwidth}{\\Large{Constructors}}}\n");		
 			if (!c.constructorInfo.isEmpty()){
 			buffer.write("\\begin{di}\n");
 			for (thingInfo f:c.constructorInfo){
