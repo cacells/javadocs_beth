@@ -27,6 +27,7 @@ public class Class2Doc {
 		}		
 		//fname may or may not include a directory
 		inFile = new File(fname);
+        if (!(inFile.isDirectory())){
 		if ((fname.length() == 0) || inFile.exists()){
 			dirname = inFile.getParent();
 			fname = inFile.getName();
@@ -45,6 +46,11 @@ public class Class2Doc {
 		else {
 			System.out.println(fname+" not found");
 		}
+        }
+        else {
+        	System.out.println(fname+" is a directory");
+        }
+
 
 	}
 

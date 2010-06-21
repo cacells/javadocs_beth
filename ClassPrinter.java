@@ -629,11 +629,11 @@ public class ClassPrinter {
 		String[] replacement = {"&lt;","&gt;"};
 		changedOrig = true;
 		for (int i=0;i<toFind.length;i++){
-			t.name = t.name.replaceAll(toFind[i],replacement[i]);
-			t.type = t.type.replaceAll(toFind[i],replacement[i]);
+			t.name = t.name.replaceAll(toFind[i],replacement[i]).trim();
+			t.type = t.type.replaceAll(toFind[i],replacement[i]).trim();
 			//and capitalise the sentences!!!
 			if (t.descript.length() > 0){
-				t.descript = t.descript.replaceAll(toFind[i],replacement[i]);
+				t.descript = t.descript.replaceAll(toFind[i],replacement[i]).trim();
 			    t.descript = t.descript.substring(0,1).toUpperCase()+t.descript.substring(1);
 			}
 		}
