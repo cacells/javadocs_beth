@@ -2,14 +2,19 @@ import java.util.regex.Matcher;
 
 
 public class ClassPrinter {
-	ClassInfo c;//define a copy because we need to filter
-	boolean changedOrig = false;//to see if it has been changed
+	ClassInfo c,classy;//define a copy because we need to filter
+	boolean changedOrig = false;//indicates when the copy differs from the orig
 	public static String dnt = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";//indent
 	//beware: no default constructor
 	public ClassPrinter(ClassInfo orig){
+		//create a copy of the info
 		c = new ClassInfo(orig);
+		//save a pointer to the orig
+		classy = orig;
 	}
-	public void printHTML(ClassInfo classy){
+	public void printHTML(){
+		//this method currently unused
+		//print HTMl in a 3 column format
 		//reset the copied vals if necessary
 		if (changedOrig) {
 			c.resetVals(classy);
@@ -168,18 +173,19 @@ public class ClassPrinter {
 		}
 	}
 
-	public void printHTML2col(ClassInfo classy){
+	public void printHTML2col(){
+		//print html file in 2 column format
+		int len;
+		String fileName=classy.htmlFilename;
+		//reset the values in the copy if necessary		
 		if (changedOrig) {
 			changedOrig = false;
 			c.resetVals(classy);
 		}
-		int len;
-		String fileName=classy.htmlFilename;
+		//check and filter for HTMl special characters
 		filterFor("HTML");
 		thingInfo con;
-
-		//thingInfo f;
-		thingInfo m;//constructor field,method
+		thingInfo m;//just a temporary short name
 
 		try {
 			java.io.FileWriter file = new java.io.FileWriter(fileName);
@@ -201,7 +207,8 @@ public class ClassPrinter {
 			buffer.write("    <td colspan=\"2\">Class</td>\n");
 			buffer.write("  </tr>\n");
 			buffer.write("  <tr>\n");
-			buffer.write("    <td class=\"indent hdr ftr\">"+c.classInfo.name+"</td>\n");
+			//added midcol here to set the width of this column all through the document
+			buffer.write("    <td class=\"indent hdr ftr midcol\">"+c.classInfo.name+"</td>\n");
 			buffer.write("	<td class=\"hdr ftr\">\n");
 			buffer.write("	  "+c.classInfo.descript+"</td>\n");
 			buffer.write("  </tr>\n");
@@ -255,6 +262,7 @@ public class ClassPrinter {
 			len = c.constructorInfo.size();
 			if (len > 0){
 		    	con = c.constructorInfo.get(0);
+		    	if (con.name.length() > 25) con.name = breaklongname(con.name);
 			    if (len == 1){
 			    	//special case: this row is both hdr and ftr
 					buffer.write("  <tr>\n");
@@ -271,6 +279,7 @@ public class ClassPrinter {
 			    	//print the middle rows
 				for (int i=1;i<len-1;i++){
 			    	con = c.constructorInfo.get(i);
+			    	if (con.name.length() > 25) con.name = breaklongname(con.name);
 					buffer.write("  <tr>\n");
 					buffer.write("    <td class=\"indent\">"+con.name+"</td>\n");
 					buffer.write("    <td >"+con.descript+" </td>\n");
@@ -278,6 +287,7 @@ public class ClassPrinter {
 				}
 		    	//print the last row
 				con = c.constructorInfo.get(len-1);
+		    	if (con.name.length() > 25) con.name = breaklongname(con.name);
 				buffer.write("  <tr>\n");
 				buffer.write("    <td class=\"indent ftr\">"+con.name+"</td>\n");
 				buffer.write("    <td class=\"ftr\">"+con.descript+" </td>\n");
@@ -341,7 +351,7 @@ public class ClassPrinter {
 		}
 	}
 	
-	public void printCSS(ClassInfo classy){
+	public void printCSS(){
         String fileName = classy.baseDirname+"/outdocshtml/"+classy.cssFilename;
 		try {
 			java.io.FileWriter file = new java.io.FileWriter(fileName);
@@ -400,7 +410,7 @@ public class ClassPrinter {
 		}
 	}
 
-	public void printLaTeX(ClassInfo classy){
+	public void printLaTeX(){
 		if (changedOrig) {
 			changedOrig = false;
 			c.resetVals(classy);
@@ -494,7 +504,7 @@ public class ClassPrinter {
 			System.out.println(e.toString());
 		}
 	}
-	public void printCSS2col(ClassInfo classy){
+	public void printCSS2col(){
         String fileName = classy.baseDirname+"/outdocshtml/"+classy.cssFilename;
 		try {
 			java.io.FileWriter file = new java.io.FileWriter(fileName);
@@ -550,13 +560,24 @@ public class ClassPrinter {
 		}
 	}
 
-    public String breaklongname(String oldstr){
-    	String newstr = oldstr;
-    	//find the ( character, and if there, break before
-    	int i = oldstr.indexOf('(');
-    	if (i > 0) newstr = oldstr.substring(0, i)+"<br>"+dnt+oldstr.substring(i);
-    	return (newstr);
-    }
+	public String breaklongname(String oldstr){
+		String newstr = oldstr,left = "";
+		//find the ( character, and if there, break before
+		int i = oldstr.indexOf('('),j;
+		if (i > 0) {
+			newstr = oldstr.substring(0, i);
+			left = oldstr.substring(i);
+			j = left.indexOf(',');
+			//might still be too large: check
+			while ((left.length() > 23) && (j > 0)) {
+				newstr = newstr +"<br>"+dnt + left.substring(0,j+1);
+				left = left.substring(j+1);
+				j = left.indexOf(',');
+			}
+			newstr = newstr +"<br>"+dnt + left;
+		}
+		return (newstr);
+	}
     public void filterFor(String App){
 		int Appval=50;
 		if (App == "Latex") {
@@ -596,7 +617,11 @@ public class ClassPrinter {
 			r = replacement[i];
 			t.name = t.name.replaceAll(toFind[i],r).trim();
 			t.type = t.type.replaceAll(toFind[i],r).trim();
-			t.descript = t.descript.replaceAll(toFind[i],r).trim();
+			//and capitalise the sentences!!!
+			if (t.descript.length() > 0){
+				t.descript = t.descript.replaceAll(toFind[i],r).trim();
+			    t.descript = t.descript.substring(0,1).toUpperCase()+t.descript.substring(1);
+			}
 		}
 	}
 	public void filterForHTML(thingInfo t){
@@ -606,7 +631,11 @@ public class ClassPrinter {
 		for (int i=0;i<toFind.length;i++){
 			t.name = t.name.replaceAll(toFind[i],replacement[i]);
 			t.type = t.type.replaceAll(toFind[i],replacement[i]);
-			t.descript = t.descript.replaceAll(toFind[i],replacement[i]);
+			//and capitalise the sentences!!!
+			if (t.descript.length() > 0){
+				t.descript = t.descript.replaceAll(toFind[i],replacement[i]);
+			    t.descript = t.descript.substring(0,1).toUpperCase()+t.descript.substring(1);
+			}
 		}
 	}
 

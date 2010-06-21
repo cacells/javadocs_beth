@@ -1,5 +1,8 @@
 
-
+/*
+ * Creates a structure to hold info describing a class, and reads the info from 
+ * interactive popups or from a file.
+ */
 	import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -24,15 +27,12 @@ import javax.swing.JOptionPane;
 		String latexFilename = "untitled.tex";
 		boolean needsCSSwritten = false;
 		boolean swapit = false;
-	
-
-		//default constructor		
-		public ClassInfo(){
-			//don't know what 2 put here
-		}
 		
-		//constructor that reads input from file		
-		public ClassInfo(String fname,boolean swap){
+		//constructor that reads input from a file or from popups		
+		public ClassInfo(String fname,String dirname,boolean swap){
+			//no filename entered - use popup dialogs to get info
+	  		baseDirname = dirname;
+	  		if (baseDirname == null) baseDirname = ".";
 			if (fname.length() == 0) {
 
 				ArrayList<String> wasreadIn = new ArrayList<String>();
@@ -59,11 +59,11 @@ import javax.swing.JOptionPane;
 				
 			}
 			else{
+				//read from file
 			swapit = swap;
 			try{
-		  		FileInputStream fstream = new FileInputStream(fname);
-		  		baseDirname = new File(fname).getParent();
-		  		if (baseDirname == null) baseDirname = ".";
+		  		FileInputStream fstream = new FileInputStream(baseDirname+"/"+fname);
+
 		  		// Get the object of DataInputStream
 		  		DataInputStream in = new DataInputStream(fstream);
 		        BufferedReader br = new BufferedReader(new InputStreamReader(in));
@@ -73,8 +73,7 @@ import javax.swing.JOptionPane;
 	  		  			if (((strLine = br.readLine()) != null) && !(strLine.contains("%"))){
 			  				classInfo.setValsFromString(strLine);
 	  		  			}
-	  		  		}
-	  				//System.out.println("it is not here wher is stuffes up");	  				
+	  		  		}	  				
 	  				if (strLine.contains("%field")){
 	  		  			while (((strLine = br.readLine()) != null) && !(strLine.contains("%"))){
 	  		  			   if(strLine.length()>0) fieldInfo.add(new thingInfo(strLine,swapit));
@@ -91,20 +90,7 @@ import javax.swing.JOptionPane;
 		  		  			}
 	  				}
 	  			}
-/*		  		if (strLine != null){
-		  			//file isn't empty
-		  			if (!strLine.contains("class")){
-		  				System.out.println("File read error: first line should contain the word \"class\"");
-		  			}
-		  			else{
-		  				//read the classinfo
-		  				strLine = br.readLine();
-		  				classInfo.setValsFromString(strLine);
-		  				//read next line
-		  				strLine = br.readLine();
-		  				
-		  			}
-		  		}*/
+
 
 
 			}
@@ -118,6 +104,7 @@ import javax.swing.JOptionPane;
 
 		public ClassInfo(ClassInfo orig){
 			//copy constructor - but only copies strings
+			//used to make copies that can be changed while saving the orig
 			//first copy classinfo thinginfo
 			classInfo.cloneVals(orig.classInfo);
 			//add a copy of each field of orig
@@ -161,6 +148,7 @@ import javax.swing.JOptionPane;
 		}
 		public void resetVals(ClassInfo orig){
 			//reset the strings to those from orig
+			//used if the copy was changed for latex or html
 			//first copy classinfo
 
 			classInfo.cloneVals(orig.classInfo);
@@ -183,6 +171,7 @@ import javax.swing.JOptionPane;
 		
 		
 		public ArrayList<String> SetParamVals(String msg,int maxit){
+			//todo: remove maxit
 			ArrayList<String> returnStrings = new ArrayList<String>();
 			String firstNumber;
 			int len=10,count = 0;
@@ -203,6 +192,8 @@ import javax.swing.JOptionPane;
 		}
 		
 		public ArrayList<String> breakItUp(String msg){
+			//break up strings entered from popups 
+			//which use forward slash as an info separator
 			ArrayList<String> stringBits = new ArrayList<String>();
 			int fi = 0,li;
 			int len = msg.length();
