@@ -468,7 +468,7 @@ public class ClassPrinter {
 			//field header then fields
 			buffer.write("\\colorbox{fieldbg}{\\parbox{1.0\\textwidth}{\\Large{Fields}}}");
 	        if (!c.fieldInfo.isEmpty()){	        	
-			buffer.write("\\vspace{0.5cm}\n\\bt\n");
+			buffer.write("\n\\bt\n");
 			for (thingInfo f:c.fieldInfo){
 			     buffer.write("\\hs \\textbf{"+f.name+"} & \\emph{type: "+f.type+"}\\\\\n");
 			 			buffer.write("& \\hs "+f.descript+"\\\\\n");
@@ -476,7 +476,8 @@ public class ClassPrinter {
 			buffer.write("\\et\n");
 	        }
 			//constructors
-			buffer.write("\n\\noindent\\colorbox{conbg}{\\parbox{1.0\\textwidth}{\\Large{Constructors}}}\n");		
+	        if (c.fieldInfo.size() == 0) buffer.write("\n");
+			buffer.write("\\noindent\\colorbox{conbg}{\\parbox{1.0\\textwidth}{\\Large{Constructors}}}\n");		
 			if (!c.constructorInfo.isEmpty()){
 			buffer.write("\\begin{di}\n");
 			for (thingInfo f:c.constructorInfo){
@@ -582,36 +583,38 @@ public class ClassPrinter {
     public void filterFor(String App){
 		int Appval=50;
 		if (App == "Latex") {
-
 			Appval = 0;
+			System.out.println("filtering for Latex");
 		}
 		if (App == "HTML"){
 
 			Appval = 1;
+			System.out.println("filtering for HTML");
 		}
-		switch (Appval){
-		case (0)://Latex
-			filterForLaTex(c.classInfo);
-			for (thingInfo t:c.fieldInfo) {filterForLaTex(t);}
-			for (thingInfo t:c.constructorInfo) {filterForLaTex(t);}
-			for (thingInfo t:c.methodInfo) {filterForLaTex(t);}
-			System.out.println("LaTex filtering");
-		break;
-		case (1)://HTML
-			filterForHTML(c.classInfo);
-			for (thingInfo t:c.fieldInfo) {filterForHTML(t);}
-			for (thingInfo t:c.constructorInfo) {filterForHTML(t);}
-			for (thingInfo t:c.methodInfo) {filterForHTML(t);}
-			System.out.println("HTML filtering");
-		break;
-		default:
-			break;
-		}
+		filteraThing(c.classInfo,Appval);
+		for (thingInfo t:c.fieldInfo) {filteraThing(t,Appval);}
+		for (thingInfo t:c.constructorInfo) {filteraThing(t,Appval);}
+		for (thingInfo t:c.methodInfo) {filteraThing(t,Appval);}
+
 	}
-	public void filterForLaTex(thingInfo t){
-		String[] toFind = {"<",">","_"};
-		String[] replacement = {"\\$<\\$","\\$>\\$","\\\\_"};
-		//crazy backslashing is necessary
+	public void filteraThing(thingInfo t,int Appval){//filter selected special characters
+		//in a thingInfo structure for either HTML or Latex output
+		String[] toFind,replacement;
+		String[] toFind_latex = {"<",">","_"};
+		String[] replacement_latex = {"\\$<\\$","\\$>\\$","\\\\_"};	
+		String[] toFind_html = {"<",">"};
+		String[] replacement_html = {"&lt;","&gt;"};
+		if (Appval == 0){
+			toFind = toFind_latex;
+			replacement = replacement_latex;
+			//crazy backslashing is necessary
+			//two backslashes change to one during compilation?
+			//and then \$ protects the $ from the replaceAll process?
+		}
+		else{
+			toFind = toFind_html;
+			replacement = replacement_html;
+		}
 		String r;
 		changedOrig = true;
 		for (int i=0;i<toFind.length;i++){
@@ -625,19 +628,6 @@ public class ClassPrinter {
 			}
 		}
 	}
-	public void filterForHTML(thingInfo t){
-		String[] toFind = {"<",">"};
-		String[] replacement = {"&lt;","&gt;"};
-		changedOrig = true;
-		for (int i=0;i<toFind.length;i++){
-			t.name = t.name.replaceAll(toFind[i],replacement[i]).trim();
-			t.type = t.type.replaceAll(toFind[i],replacement[i]).trim();
-			//and capitalise the sentences!!!
-			if (t.descript.length() > 0){
-				t.descript = t.descript.replaceAll(toFind[i],replacement[i]).trim();
-			    t.descript = t.descript.substring(0,1).toUpperCase()+t.descript.substring(1);
-			}
-		}
-	}
+
 
 }

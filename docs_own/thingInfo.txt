@@ -1,20 +1,20 @@
 %class
 thingInfo// Classes are a collection of things that have name, type and description. For instance a variable (field) has a name, type, and may be described. A method has a name, a return type, and may also be described. So, thingInfo is a Class to store a collection of three strings called name, type, and description.
 %fields
-	String/name/Name of the thing
-	String/type/A type associated with the thing. e.g. if the thing is a field then type might be boolean. If the thing is a method, then the type would be the return type of the method, e.g. void. Type is not used for class things or constructor things.
-	String/descript/A description of the thing.
+String/name/Name of the thing
+String/type/A type associated with the thing. e.g. if the thing is a field then type might be boolean. If the thing is a method, then the type would be the return type of the method, e.g. void. Type is not used for class things or constructor things.
+String/descript/A description of the thing.
 %constructors
-    thingInfo()//default constructor sets empty strings
-    thingInfo(String allinfo)//constructor to set the fields from a single input string which holds name, type, and description separated by forward slashes. The order of the info must be correct.
-    thingInfo(String allinfo,boolean swapit)//constructor to set the fields from a single input string. The boolean swapit determines whether the fields are in standard format (name before type) or in swapped format (type before name).
-    thingInfo(String thename,String thetype,String thedescript) //unused constructor
-    thingInfo(thingInfo orig)//copy constructor
+ thingInfo()//default constructor sets empty strings
+ thingInfo(String allinfo)//constructor to set the fields from a single input string which holds name, type, and description separated by forward slashes. The order of the info must be correct.
+ thingInfo(String allinfo,boolean swapit)//constructor to set the fields from a single input string. The boolean swapit determines whether the fields are in standard format (name before type) or in swapped format (type before name).
+ thingInfo(String thename,String thetype,String thedescript) //unused constructor
+ thingInfo(thingInfo orig)//copy constructor
 %methods
-    void/ cloneVals(thingInfo orig)/copy field values from orig 
-    void /setValsFromString(String allinfo)/set the field values from a forward slash delimited string
-    void/setName(String thename)/set the name field
-    void/ setType(String thetype)/set the type field
-    void/ setDescript(String thedescript)/set the description field
-    String/ toString()/Returns a string for printing
-	ArrayList<String>/ breakItUp(String msg)/break a string into fields at each slash separator.
+ void/ cloneVals(thingInfo orig)/copy field values from orig 
+ void /setValsFromString(String allinfo)/set the field values from a forward slash delimited string
+ void/setName(String thename)/set the name field
+ void/ setType(String thetype)/set the type field
+ void/ setDescript(String thedescript)/set the description field
+ String/ toString()/Returns a string for printing
+ArrayList<String>/ breakItUp(String msg)/break a string into fields at each slash separator.
