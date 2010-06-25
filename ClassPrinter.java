@@ -1,4 +1,5 @@
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 
 
@@ -6,6 +7,15 @@ public class ClassPrinter {
 	ClassInfo c,classy;//define a copy because we need to filter
 	boolean changedOrig = false;//indicates when the copy differs from the orig
 	public static String dnt = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";//indent
+	String classclr_h="9FB0BA";
+	String fieldclr_h = "C8D8E1";
+	String consclr_h = "D3CCA1";
+	String methclr_h = "F0EAC8";
+	DecimalFormat three = new DecimalFormat("0.000");
+	String classclr_l = getlatexColourString(classclr_h);
+	String fieldclr_l = getlatexColourString(fieldclr_h);
+	String consclr_l = getlatexColourString(consclr_h);
+	String methclr_l = getlatexColourString(methclr_h);
 	//beware: no default constructor
 	public ClassPrinter(ClassInfo orig){
 		//create a copy of the info
@@ -43,7 +53,7 @@ public class ClassPrinter {
 			buffer.write("</head>\n");
 			buffer.write("\n");
 			buffer.write("<body>\n");
-			buffer.write("<table width=\"100%\"  border=\"0\" cellspacing=\"0\" class=\"tabletype1\" valign=\"top\" >\n");
+			buffer.write("<table width=\"100%\"  border=\"0\" cellspacing=\"10\" class=\"tabletype1\" valign=\"top\" >\n");
 			buffer.write("  <tr class=\"CHdr\">\n");
 			buffer.write("    <td colspan=\"3\">Class</td>\n");
 			buffer.write("  </tr>\n");
@@ -203,9 +213,9 @@ public class ClassPrinter {
 			buffer.write("</head>\n");
 			buffer.write("\n");
 			buffer.write("<body>\n");
-			buffer.write("<table width=\"100%\"  border=\"0\" cellspacing=\"1\" class=\"tabletype1\" valign=\"top\" >\n");
+			buffer.write("<table  class=\"tabletype1\" cellspacing=\"10\" valign=\"top\" >\n");
 			buffer.write("  <tr class=\"CHdr\">\n");
-			buffer.write("    <td colspan=\"2\">Class</td>\n");
+			buffer.write("    <td >Class</td>\n");
 			buffer.write("  </tr>\n");
 			buffer.write("  <tr>\n");
 			//added midcol here to set the width of this column all through the document
@@ -216,7 +226,7 @@ public class ClassPrinter {
 			//write out field info
 			buffer.write("  </tr>\n");
 			buffer.write("  <tr class=FHdr>\n");
-			buffer.write("    <td colspan=\"2\">Fields</td>\n");
+			buffer.write("    <td >Fields</td>\n");
 			buffer.write("  </tr>\n");
 			//for each field
 			len = c.fieldInfo.size();
@@ -257,7 +267,7 @@ public class ClassPrinter {
 			    }
 			}
 			buffer.write("  <tr class=\"ConHdr\">\n");
-			buffer.write("    <td colspan=\"2\">Constructors</td>\n");
+			buffer.write("    <td >Constructors</td>\n");
 			buffer.write("  </tr>\n");
 			//for each constructor
 			len = c.constructorInfo.size();
@@ -295,10 +305,10 @@ public class ClassPrinter {
 				buffer.write("  </tr>\n");
 				}
 			}
-			else buffer.write("<tr>&nbsp;</tr>\n");
+			//else buffer.write("<tr>&nbsp;</tr>\n");
 			//now for the methods
 			buffer.write("  <tr class=\"MHdr\">\n");
-			buffer.write("    <td colspan=\"2\">Methods</td>\n");
+			buffer.write("    <td >Methods</td>\n");
 			buffer.write("  </tr>\n");
 			//for each method
 			len = c.methodInfo.size();
@@ -359,16 +369,16 @@ public class ClassPrinter {
 			java.io.BufferedWriter buffer = new java.io.BufferedWriter(file);
 			System.out.println(fileName);
 			buffer.write(".CHdr {\n");
-			buffer.write("	background-color: #B4A595;\n");
+			buffer.write("	background-color: #"+classclr_h+";\n");
 			buffer.write("}\n");
 			buffer.write(".FHdr {\n");
-			buffer.write("	background-color: #5CA3BE;\n");
+			buffer.write("	background-color: #"+fieldclr_h+";\n");
 			buffer.write("}\n");
 			buffer.write(".ConHdr {\n");
-			buffer.write("	background-color: #B5CAD5;\n");
+			buffer.write("	background-color: #"+consclr_h+";\n");
 			buffer.write("}\n");
 			buffer.write(".MHdr {\n");
-			buffer.write("	background-color: #D8EAF3;\n");
+			buffer.write("	background-color: #"+methclr_h+";\n");
 			buffer.write("}\n");
 			buffer.write("td {\n");
 			buffer.write("vertical-align:top\n");
@@ -431,10 +441,10 @@ public class ClassPrinter {
 			buffer.write(" \n");
 			buffer.write("\\usepackage[pdftex,usenames,dvipsnames]{color}\n");
 			buffer.write("\n");
-			buffer.write("\\definecolor{classbg}{rgb}{0.707,0.648,0.586}\n");
-			buffer.write("\\definecolor{fieldbg}{rgb}{0.363,0.641,0.746}\n");
-			buffer.write("\\definecolor{conbg}{rgb}{0.711,0.793,0.836}\n");
-			buffer.write("\\definecolor{descriptbg}{rgb}{0.848,0.918,0.953}\n");
+			buffer.write("\\definecolor{classbg}{rgb}{"+classclr_l+"}\n");
+			buffer.write("\\definecolor{fieldbg}{rgb}{"+fieldclr_h+"}\n");
+			buffer.write("\\definecolor{conbg}{rgb}{"+consclr_h+"}\n");
+			buffer.write("\\definecolor{descriptbg}{rgb}{"+methclr_h+"}\n");
 			buffer.write("\n");
 			buffer.write("\\usepackage[T1]{fontenc}\n");
 			buffer.write("\\renewcommand*\\familydefault{\\sfdefault}\n");
@@ -513,17 +523,18 @@ public class ClassPrinter {
 			java.io.BufferedWriter buffer = new java.io.BufferedWriter(file);
 			System.out.println(fileName);
 			buffer.write(".CHdr {\n");
-			buffer.write("	background-color: #B4A595;\n");
+			buffer.write("	background-color: #"+classclr_h+";\n");
 			buffer.write("}\n");
 			buffer.write(".FHdr {\n");
-			buffer.write("	background-color: #5CA3BE;\n");
+			buffer.write("	background-color: #"+fieldclr_h+";\n");
 			buffer.write("}\n");
 			buffer.write(".ConHdr {\n");
-			buffer.write("	background-color: #B5CAD5;\n");
+			buffer.write("	background-color: #"+consclr_h+";\n");
 			buffer.write("}\n");
 			buffer.write(".MHdr {\n");
-			buffer.write("	background-color: #D8EAF3;\n");
+			buffer.write("	background-color: #"+methclr_h+";\n");
 			buffer.write("}\n");
+			buffer.write("table.tabletype1 {\n border-spacing: 10px;\n width: 98%;\n}");
 			buffer.write("td {\n");
 			buffer.write("vertical-align:top\n");
 			buffer.write("}\n");
@@ -628,6 +639,24 @@ public class ClassPrinter {
 			}
 		}
 	}
-
-
+	public int[] intColourVal(String webColour){
+		int[] rgb = new int[3];
+		rgb[0] = Integer.valueOf(webColour.substring(0, 2), 16).intValue();
+		rgb[1] = Integer.valueOf(webColour.substring(2, 4), 16).intValue();
+		rgb[2] = Integer.valueOf(webColour.substring(4, 6), 16).intValue();
+		return rgb;			
+	}
+	public String getlatexColourString(String webColour){
+		DecimalFormat three = new DecimalFormat("0.000");
+		double[] rgb = new double[3];
+		int tint;
+		tint = Integer.valueOf(webColour.substring(0, 2), 16).intValue();
+		rgb[0] = (double)tint/255.0;
+		tint = Integer.valueOf(webColour.substring(2, 4), 16).intValue();
+		rgb[1] = (double)tint/255.0;
+		tint = Integer.valueOf(webColour.substring(4, 6), 16).intValue();
+		rgb[2] = (double)tint/255.0;
+		String srgb = three.format(rgb[0])+" "+three.format(rgb[1])+" "+three.format(rgb[2]);
+		return srgb;			
+	}
 }
