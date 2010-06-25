@@ -442,9 +442,9 @@ public class ClassPrinter {
 			buffer.write("\\usepackage[pdftex,usenames,dvipsnames]{color}\n");
 			buffer.write("\n");
 			buffer.write("\\definecolor{classbg}{rgb}{"+classclr_l+"}\n");
-			buffer.write("\\definecolor{fieldbg}{rgb}{"+fieldclr_h+"}\n");
-			buffer.write("\\definecolor{conbg}{rgb}{"+consclr_h+"}\n");
-			buffer.write("\\definecolor{descriptbg}{rgb}{"+methclr_h+"}\n");
+			buffer.write("\\definecolor{fieldbg}{rgb}{"+fieldclr_l+"}\n");
+			buffer.write("\\definecolor{conbg}{rgb}{"+consclr_l+"}\n");
+			buffer.write("\\definecolor{descriptbg}{rgb}{"+methclr_l+"}\n");
 			buffer.write("\n");
 			buffer.write("\\usepackage[T1]{fontenc}\n");
 			buffer.write("\\renewcommand*\\familydefault{\\sfdefault}\n");
@@ -656,7 +656,7 @@ public class ClassPrinter {
 		rgb[1] = (double)tint/255.0;
 		tint = Integer.valueOf(webColour.substring(4, 6), 16).intValue();
 		rgb[2] = (double)tint/255.0;
-		String srgb = three.format(rgb[0])+" "+three.format(rgb[1])+" "+three.format(rgb[2]);
+		String srgb = three.format(rgb[0])+","+three.format(rgb[1])+","+three.format(rgb[2]);
 		return srgb;			
 	}
 }

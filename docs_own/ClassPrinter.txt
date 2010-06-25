@@ -1,17 +1,28 @@
 %class 
-ClassPrinter//This class contains the methods for printing the information from a ClassInfo structure into a latex, html, and css files, and for filtering out special characters for html and latex.
+ClassPrinter//This class contains the methods for printing the information from a ClassInfo structure into a LaTex, html, and css ﬁles, and for ﬁltering out special characters for html and LaTex.
 %fields
-ClassInfo/c, classy/classy is the original ClassInfo and c is the version that gets changed by the filters.
-boolean/changedOrig/indicates when the copy differs from the original
-String/dnt/This is static and just defines an indent, composed of spaces, for html.
-%constructors
-ClassPrinter(ClassInfo orig)//This constructor copes the strings of orig into c and saves a pointer to orig.
-%method
-void/printHTML()/an old HTML printing method.
-void/printHTML2col()/prints an HTMl file containing the info about the class. The HTML file uses a two column layout.
-void/printCSS()/prints a css file, old version. Doesn't require any input.
-void/printLaTeX()/prints a LaTex file containing the info about the class.
-void/printCSS2col()/prints a css file for the two column html layout. No input required.
-String/breaklongname(String oldstr)/Break up a string at a bracket and then at any commas after that if necessary.
-void/filterFor(String App)/Calls the appropriate filtering method for each string of information.
-void/filteraThing(thingInfo t,int Appval)/replace Latex or HTML (according to Appval) special characters in t.
+ClassInfo/ c,classy/Classy is the original ClassInfo and c is the version that gets changed by the ﬁlters.
+	boolean/changedOrig/indicates when the copy differs from the orig
+	String/ dnt/This is static and just deﬁnes an indent, composed of spaces, for html. 
+	String/classclr_h/ HTML colour for the class name box
+	String/fieldclr_h /HTML colour for the fields box
+	String/consclr_h /HTML colour for the constructors box
+	String/methclr_h/HTML colour for the methods box
+	DecimalFormat/three /format for printing things to three decimal places
+	String/classclr_l /String version of a the LaTex colour corresponding to classclr_h
+	String/fieldclr_l  /String version of a the LaTex colour corresponding to fieldclr_h
+	String/consclr_l  /String version of a the LaTex colour corresponding to consclr_h
+	String/methclr_l  /String version of a the LaTex colour corresponding to methclr_h
+%constructor
+	ClassPrinter(ClassInfo orig)//This constructor copes the strings of orig into c and saves a pointer to orig.
+%methods
+	void/printHTML()/An old HTML printing method.
+	void/printHTML2col() /Prints an HTMl ﬁle containing the info about the class. The HTML ﬁle uses a two column layout. 
+	void/printCSS() /Prints a css ﬁle, old version. Doesn’t require any input.
+	void/printLaTex() /Prints a LaTex ﬁle containing the info about the class.
+	void/printCSS2col() /Prints a css ﬁle for the two column html layout. No input required. 
+	String/breaklongname(String oldstr) /Break up a string at a bracket and then at any commas after that if necessary.
+      void/ filterFor(String App) /Calls the appropriate ﬁltering method for each string of information.
+	void/filteraThing(thingInfo t,int Appval) /filter selected special characters
+	int[]/intColourVal(String webColour) /takes a string version of the HTML colour and returns an array of the r,g,b colours as 3 integers.
+	String/getLaTexColourString(String webColour) /takes a string version of the HTML colour and returns a string version of the corresponding LaTex colour.
